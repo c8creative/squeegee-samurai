@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import logo from '../assets/images/squeegee-samurai-logo.jpg'; // Adjust path if needed
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +40,16 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <div className="text-2xl font-bold text-blue-900">
-              🥷 Squeegee Samurai
+<Link to="/" className="flex items-center space-x-2">
+  <img
+    src={logo}
+    alt="Squeegee Samurai Logo"
+    className="h-10 w-auto"
+  />
+  <span className="text-2xl font-bold text-blue-900">
+    Squeegee Samurai
+  </span>
+</Link>
             </div>
           </Link>
 
