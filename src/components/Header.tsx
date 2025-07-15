@@ -35,24 +35,15 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Akatsuki-style clouds */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-2 left-1/4 w-16 h-8 bg-gradient-to-r from-red-100 to-orange-100 rounded-full opacity-30 transform rotate-12"></div>
-          <div className="absolute top-4 right-1/3 w-12 h-6 bg-gradient-to-r from-red-50 to-orange-50 rounded-full opacity-40 transform -rotate-6"></div>
-          <div className="absolute bottom-2 left-2/3 w-20 h-10 bg-gradient-to-r from-orange-100 to-red-100 rounded-full opacity-25 transform rotate-3"></div>
-        </div>
-        
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center relative z-10">
-            <div className="bg-gradient-to-br from-primary-50 to-primary-100 p-2 rounded-lg shadow-sm border border-primary-200">
-              <img
-                src={logo}
-                alt="Squeegee Samurai Logo"
-                className="h-20 w-auto"
-              />
-            </div>
+            <img
+              src={logo}
+              alt="Squeegee Samurai Logo"
+              className="h-20 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -60,7 +51,7 @@ const Header = () => {
             <Link
               to="/"
               className={`font-medium transition-colors ${
-                isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
               }`}
             >
               Home
@@ -68,7 +59,7 @@ const Header = () => {
             <Link
               to="/about"
               className={`font-medium transition-colors ${
-                isActive('/about') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/about') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
               }`}
             >
               About
@@ -78,33 +69,35 @@ const Header = () => {
             <div className="relative">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center font-medium text-neutral-700 hover:text-primary-600 transition-colors"
+                className={`flex items-center font-medium transition-colors ${
+                  location.pathname.startsWith('/services') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
+                }`}
               >
                 Services
                 <ChevronDown className="w-4 h-4 ml-1" />
               </button>
               {isServicesOpen && (
                 <div
-                  className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-2"
+                  className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-neutral-200 py-2"
                 >
                   <Link
                     to="/services"
                     onClick={() => setIsServicesOpen(false)}
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                   >
                     All Services
                   </Link>
                   <Link
                     to="/services/residential"
                     onClick={() => setIsServicesOpen(false)}
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                   >
                     Residential
                   </Link>
                   <Link
                     to="/services/commercial"
                     onClick={() => setIsServicesOpen(false)}
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                   >
                     Commercial
                   </Link>
@@ -149,23 +142,44 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="font-medium text-neutral-700 hover:text-primary-600">
+              <Link 
+                to="/" 
+                onClick={() => setIsMenuOpen(false)}
+                className="font-medium text-neutral-700 hover:text-primary-600"
+              >
                 Home
               </Link>
-              <Link to="/about" className="font-medium text-neutral-700 hover:text-primary-600">
+              <Link 
+                to="/about" 
+                onClick={() => setIsMenuOpen(false)}
+                className="font-medium text-neutral-700 hover:text-primary-600"
+              >
                 About
               </Link>
-              <Link to="/services" className="font-medium text-neutral-700 hover:text-primary-600">
+              <Link 
+                to="/services" 
+                onClick={() => setIsMenuOpen(false)}
+                className="font-medium text-neutral-700 hover:text-primary-600"
+              >
                 Services
               </Link>
-              <Link to="/service-areas" className="font-medium text-neutral-700 hover:text-primary-600">
+              <Link 
+                to="/service-areas" 
+                onClick={() => setIsMenuOpen(false)}
+                className="font-medium text-neutral-700 hover:text-primary-600"
+              >
                 Service Areas
               </Link>
-              <Link to="/contact" className="font-medium text-neutral-700 hover:text-primary-600">
+              <Link 
+                to="/contact" 
+                onClick={() => setIsMenuOpen(false)}
+                className="font-medium text-neutral-700 hover:text-primary-600"
+              >
                 Contact
               </Link>
               <Link
                 to="/free-estimate"
+                onClick={() => setIsMenuOpen(false)}
                 className="bg-accent-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-600 transition-colors text-center"
               >
                 Free Estimate

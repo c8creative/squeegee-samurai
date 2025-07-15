@@ -60,11 +60,11 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               Ready for crystal clear windows? Get in touch with Squeegee Samurai today
             </p>
           </div>
@@ -77,45 +77,45 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Get In Touch</h2>
+              <h2 className="text-3xl font-bold text-neutral-900 mb-8">Get In Touch</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <Phone className="w-6 h-6 text-blue-600 mr-4 mt-1" />
+                  <Phone className="w-6 h-6 text-primary-600 mr-4 mt-1" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">Call us for immediate assistance</p>
-                    <a href="tel:5403351059" className="text-blue-600 font-semibold hover:text-blue-800">
+                    <h3 className="text-lg font-semibold text-neutral-900">Phone</h3>
+                    <p className="text-neutral-600">Call us for immediate assistance</p>
+                    <a href="tel:5403351059" className="text-primary-600 font-semibold hover:text-primary-800">
                       (540) 335-1059
                     </a>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <Mail className="w-6 h-6 text-blue-600 mr-4 mt-1" />
+                  <Mail className="w-6 h-6 text-primary-600 mr-4 mt-1" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">Send us a message anytime</p>
-                    <a href="mailto:james@squeegee-samurai.com" className="text-blue-600 font-semibold hover:text-blue-800">
+                    <h3 className="text-lg font-semibold text-neutral-900">Email</h3>
+                    <p className="text-neutral-600">Send us a message anytime</p>
+                    <a href="mailto:james@squeegee-samurai.com" className="text-primary-600 font-semibold hover:text-primary-800">
                       james@squeegee-samurai.com
                     </a>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <MapPin className="w-6 h-6 text-blue-600 mr-4 mt-1" />
+                  <MapPin className="w-6 h-6 text-primary-600 mr-4 mt-1" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Service Area</h3>
-                    <p className="text-gray-600">Proudly serving all of Loudoun County</p>
-                    <p className="text-blue-600 font-semibold">Loudoun County, Virginia</p>
+                    <h3 className="text-lg font-semibold text-neutral-900">Service Area</h3>
+                    <p className="text-neutral-600">Proudly serving all of Loudoun County</p>
+                    <p className="text-primary-600 font-semibold">Loudoun County, Virginia</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <Clock className="w-6 h-6 text-blue-600 mr-4 mt-1" />
+                  <Clock className="w-6 h-6 text-primary-600 mr-4 mt-1" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Business Hours</h3>
-                    <div className="text-gray-600">
+                    <h3 className="text-lg font-semibold text-neutral-900">Business Hours</h3>
+                    <div className="text-neutral-600">
                       <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
                       <p>Saturday: 8:00 AM - 4:00 PM</p>
                       <p>Sunday: By appointment only</p>
@@ -126,13 +126,13 @@ const Contact = () => {
 
               {/* Emergency Service */}
               <div className="mt-8 bg-red-50 p-6 rounded-lg">
-                <h3 className="text-lg font-semibold text-red-900 mb-2">Emergency Service</h3>
-                <p className="text-red-800 mb-4">
+                <h3 className="text-lg font-semibold text-accent-900 mb-2">Emergency Service</h3>
+                <p className="text-accent-800 mb-4">
                   Need urgent window cleaning for a special event or emergency situation?
                 </p>
                 <a
                   href="tel:5403351059"
-                  className="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors inline-block"
+                  className="bg-accent-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-700 transition-colors inline-block"
                 >
                   Call for Emergency Service
                 </a>
@@ -141,12 +141,12 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div>
-              <div className="bg-gray-50 p-8 rounded-lg">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+              <div className="bg-neutral-50 p-8 rounded-lg">
+                <h2 className="text-2xl font-bold text-neutral-900 mb-6">Send Us a Message</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -155,12 +155,12 @@ const Contact = () => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -169,12 +169,12 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
                       Phone Number
                     </label>
                     <input
@@ -182,12 +182,12 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
                       Subject *
                     </label>
                     <select
@@ -195,7 +195,7 @@ const Contact = () => {
                       required
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="">Select a subject</option>
                       <option value="free-estimate">Request Free Estimate</option>
@@ -209,7 +209,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
                       Message *
                     </label>
                     <textarea
@@ -219,13 +219,13 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell us about your window cleaning needs..."
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
                   
                   <button
                     type="submit"
-                    className="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center"
+                    className="w-full bg-accent-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-700 transition-colors flex items-center justify-center"
                   >
                     <Send className="w-5 h-5 mr-2" />
                     Send Message
@@ -238,11 +238,11 @@ const Contact = () => {
       </section>
 
       {/* Service Areas */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">We Serve All of Loudoun County</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">We Serve All of Loudoun County</h2>
+            <p className="text-lg text-neutral-600">
               Professional window cleaning services throughout Northern Virginia
             </p>
           </div>
@@ -250,7 +250,7 @@ const Contact = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {['Ashburn', 'Leesburg', 'Sterling', 'Herndon', 'Reston', 'Purcellville', 'Middleburg', 'Hamilton'].map((city) => (
               <div key={city} className="bg-white p-4 rounded-lg shadow">
-                <span className="font-semibold text-gray-800">{city}</span>
+                <span className="font-semibold text-neutral-800">{city}</span>
               </div>
             ))}
           </div>
@@ -258,7 +258,7 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
+      <section className="py-16 bg-accent-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready for Crystal Clear Windows?</h2>
           <p className="text-xl mb-8">
@@ -267,13 +267,13 @@ const Contact = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:5403351059"
-              className="bg-white text-green-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-accent-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-neutral-100 transition-colors"
             >
               Call (540) 335-1059
             </a>
             <a
               href="/free-estimate"
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-accent-600 transition-colors"
             >
               Get Free Estimate
             </a>

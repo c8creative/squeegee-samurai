@@ -120,12 +120,12 @@ const FAQ = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <HelpCircle className="w-16 h-16 mx-auto mb-6 text-blue-200" />
+            <HelpCircle className="w-16 h-16 mx-auto mb-6 text-primary-200" />
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Frequently Asked Questions</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               Find answers to common questions about our window cleaning services in Loudoun County
             </p>
           </div>
@@ -137,7 +137,7 @@ const FAQ = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {faqs.map((category, categoryIndex) => (
             <div key={categoryIndex} className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-blue-600 pb-2">
+              <h2 className="text-2xl font-bold text-neutral-900 mb-6 border-b-2 border-primary-600 pb-2">
                 {category.category}
               </h2>
               
@@ -147,22 +147,22 @@ const FAQ = () => {
                   const isOpen = openQuestion === globalIndex;
                   
                   return (
-                    <div key={questionIndex} className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                    <div key={questionIndex} className="bg-white border border-neutral-200 rounded-lg shadow-sm">
                       <button
                         onClick={() => toggleQuestion(globalIndex)}
-                        className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                        className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-neutral-50 transition-colors"
                       >
-                        <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                        <span className="font-semibold text-neutral-900 pr-4">{faq.question}</span>
                         {isOpen ? (
-                          <ChevronUp className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                          <ChevronUp className="w-5 h-5 text-primary-600 flex-shrink-0" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                          <ChevronDown className="w-5 h-5 text-primary-600 flex-shrink-0" />
                         )}
                       </button>
                       
                       {isOpen && (
                         <div className="px-6 pb-4">
-                          <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                          <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>
                         </div>
                       )}
                     </div>
@@ -175,30 +175,30 @@ const FAQ = () => {
       </section>
 
       {/* Still Have Questions */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <h2 className="text-3xl font-bold text-neutral-900 mb-4">Still Have Questions?</h2>
+          <p className="text-lg text-neutral-600 mb-8">
             Can't find the answer you're looking for? We're here to help!
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:5403351059"
-              className="flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="flex items-center justify-center bg-primary-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors"
             >
               <Phone className="w-5 h-5 mr-2" />
               Call (540) 335-1059
             </a>
             <Link
               to="/contact"
-              className="bg-gray-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-700 transition-colors"
+              className="bg-neutral-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-neutral-700 transition-colors"
             >
               Contact Us
             </Link>
             <Link
               to="/free-estimate"
-              className="bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-700 transition-colors"
+              className="bg-accent-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-700 transition-colors"
             >
               Get Free Estimate
             </Link>
@@ -210,32 +210,32 @@ const FAQ = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Quick Tips</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">Quick Tips</h2>
+            <p className="text-lg text-neutral-600">
               Helpful information to get the most from your window cleaning service
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">Best Time to Clean</h3>
-              <p className="text-blue-800">
+            <div className="bg-primary-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-primary-900 mb-3">Best Time to Clean</h3>
+              <p className="text-primary-800">
                 Spring and fall are ideal times for comprehensive window cleaning. Summer and winter 
                 maintenance keeps them looking great year-round.
               </p>
             </div>
             
-            <div className="bg-green-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-green-900 mb-3">Maintenance Between Cleanings</h3>
-              <p className="text-green-800">
+            <div className="bg-accent-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-accent-900 mb-3">Maintenance Between Cleanings</h3>
+              <p className="text-accent-800">
                 Use a microfiber cloth for light dusting and spot cleaning. Avoid paper towels 
                 and household cleaners that can leave streaks.
               </p>
             </div>
             
-            <div className="bg-yellow-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-yellow-900 mb-3">Maximize Your Investment</h3>
-              <p className="text-yellow-800">
+            <div className="bg-gold-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-gold-900 mb-3">Maximize Your Investment</h3>
+              <p className="text-gold-800">
                 Regular cleaning prevents buildup that can damage windows over time. It's more 
                 cost-effective than dealing with permanent staining or replacement.
               </p>
