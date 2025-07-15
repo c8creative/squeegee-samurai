@@ -125,8 +125,8 @@ const About = () => {
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Satisfaction Guarantee</h3>
               <p className="text-gray-600 mb-4">
-                If you're not completely satisfied with our work, we'll return within 24 hours to 
-                make it right at no additional charge.
+                We guarantee satisfaction on every window we clean. If any window doesn't meet your 
+                expectations, we'll return to re-clean it at a discounted rate within 24 hours.
               </p>
             </div>
             

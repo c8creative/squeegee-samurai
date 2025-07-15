@@ -209,7 +209,7 @@ const CommercialServices = () => {
               <Star className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">Quality Guarantee</h3>
               <p className="text-gray-600 text-sm">
-                If you're not satisfied, we'll return within 24 hours at no charge.
+                We guarantee satisfaction on every window. If any window doesn't meet expectations, we'll return at a discounted rate.
               </p>
             </div>
           </div>

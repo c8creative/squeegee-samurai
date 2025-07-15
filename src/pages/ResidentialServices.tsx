@@ -198,7 +198,7 @@ const ResidentialServices = () => {
               <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">Satisfaction Guaranteed</h3>
               <p className="text-gray-600 text-sm">
-                If you're not happy, we'll return within 24 hours to make it right.
+                We guarantee satisfaction on every window. If any window doesn't meet expectations, we'll return at a discounted rate.
               </p>
             </div>
             

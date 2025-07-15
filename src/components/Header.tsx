@@ -35,18 +35,23 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Akatsuki-style clouds */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-2 left-1/4 w-16 h-8 bg-gradient-to-r from-red-100 to-orange-100 rounded-full opacity-30 transform rotate-12"></div>
+          <div className="absolute top-4 right-1/3 w-12 h-6 bg-gradient-to-r from-red-50 to-orange-50 rounded-full opacity-40 transform -rotate-6"></div>
+          <div className="absolute bottom-2 left-2/3 w-20 h-10 bg-gradient-to-r from-orange-100 to-red-100 rounded-full opacity-25 transform rotate-3"></div>
+        </div>
+        
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <div className="flex items-center">
-              <Link to="/">
-                <img
-                  src={logo}
-                  alt="Squeegee Samurai Logo"
-                  className="h-24 w-auto"
-                />
-              </Link>
+          <Link to="/" className="flex items-center relative z-10">
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 p-2 rounded-lg shadow-sm border border-primary-200">
+              <img
+                src={logo}
+                alt="Squeegee Samurai Logo"
+                className="h-20 w-auto"
+              />
             </div>
           </Link>
 
@@ -72,8 +77,7 @@ const Header = () => {
             {/* Services Dropdown */}
             <div className="relative">
               <button
-                onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className="flex items-center font-medium text-neutral-700 hover:text-primary-600 transition-colors"
               >
                 Services
@@ -81,24 +85,25 @@ const Header = () => {
               </button>
               {isServicesOpen && (
                 <div
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setIsServicesOpen(false)}
                   className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-2"
                 >
                   <Link
                     to="/services"
+                    onClick={() => setIsServicesOpen(false)}
                     className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
                   >
                     All Services
                   </Link>
                   <Link
                     to="/services/residential"
+                    onClick={() => setIsServicesOpen(false)}
                     className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
                   >
                     Residential
                   </Link>
                   <Link
                     to="/services/commercial"
+                    onClick={() => setIsServicesOpen(false)}
                     className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
                   >
                     Commercial
@@ -114,14 +119,6 @@ const Header = () => {
               }`}
             >
               Service Areas
-            </Link>
-            <Link
-              to="/gallery"
-              className={`font-medium transition-colors ${
-                isActive('/gallery') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
-              }`}
-            >
-              Gallery
             </Link>
             <Link
               to="/contact"
@@ -163,12 +160,6 @@ const Header = () => {
               </Link>
               <Link to="/service-areas" className="font-medium text-neutral-700 hover:text-primary-600">
                 Service Areas
-              </Link>
-              <Link to="/gallery" className="font-medium text-neutral-700 hover:text-primary-600">
-                Gallery
-              </Link>
-              <Link to="/eco-friendly" className="font-medium text-neutral-700 hover:text-primary-600">
-                Eco-Friendly
               </Link>
               <Link to="/contact" className="font-medium text-neutral-700 hover:text-primary-600">
                 Contact

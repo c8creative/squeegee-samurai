@@ -8,7 +8,6 @@ import Services from './pages/Services';
 import ResidentialServices from './pages/ResidentialServices';
 import CommercialServices from './pages/CommercialServices';
 import ServiceAreas from './pages/ServiceAreas';
-import Gallery from './pages/Gallery';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import FreeEstimate from './pages/FreeEstimate';
@@ -26,7 +25,6 @@ function App() {
             <Route path="/services/residential" element={<ResidentialServices />} />
             <Route path="/services/commercial" element={<CommercialServices />} />
             <Route path="/service-areas" element={<ServiceAreas />} />
-            <Route path="/gallery" element={<Gallery />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/free-estimate" element={<FreeEstimate />} />
