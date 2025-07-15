@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
       {/* Top Bar */}
-      <div className="bg-blue-900 text-white py-2">
+      <div className="bg-primary-800 text-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
@@ -74,7 +74,7 @@ const Header = () => {
               <button
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
-                className="flex items-center font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                className="flex items-center font-medium text-neutral-700 hover:text-primary-600 transition-colors"
               >
                 Services
                 <ChevronDown className="w-4 h-4 ml-1" />
@@ -87,19 +87,19 @@ const Header = () => {
                 >
                   <Link
                     to="/services"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
                   >
                     All Services
                   </Link>
                   <Link
                     to="/services/residential"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
                   >
                     Residential
                   </Link>
                   <Link
                     to="/services/commercial"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-600"
                   >
                     Commercial
                   </Link>
@@ -110,7 +110,7 @@ const Header = () => {
             <Link
               to="/service-areas"
               className={`font-medium transition-colors ${
-                isActive('/service-areas') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/service-areas') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
               }`}
             >
               Service Areas
@@ -118,7 +118,7 @@ const Header = () => {
             <Link
               to="/gallery"
               className={`font-medium transition-colors ${
-                isActive('/gallery') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/gallery') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
               }`}
             >
               Gallery
@@ -126,14 +126,14 @@ const Header = () => {
             <Link
               to="/contact"
               className={`font-medium transition-colors ${
-                isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/contact') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
               }`}
             >
               Contact
             </Link>
             <Link
               to="/free-estimate"
-              className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors"
+              className="bg-accent-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-600 transition-colors"
             >
               Free Estimate
             </Link>
@@ -142,7 +142,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-blue-600"
+            className="lg:hidden p-2 rounded-md text-neutral-700 hover:text-primary-600"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -152,31 +152,31 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/" className="font-medium text-neutral-700 hover:text-primary-600">
                 Home
               </Link>
-              <Link to="/about" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/about" className="font-medium text-neutral-700 hover:text-primary-600">
                 About
               </Link>
-              <Link to="/services" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/services" className="font-medium text-neutral-700 hover:text-primary-600">
                 Services
               </Link>
-              <Link to="/service-areas" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/service-areas" className="font-medium text-neutral-700 hover:text-primary-600">
                 Service Areas
               </Link>
-              <Link to="/gallery" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/gallery" className="font-medium text-neutral-700 hover:text-primary-600">
                 Gallery
               </Link>
-              <Link to="/eco-friendly" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/eco-friendly" className="font-medium text-neutral-700 hover:text-primary-600">
                 Eco-Friendly
               </Link>
-              <Link to="/contact" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link to="/contact" className="font-medium text-neutral-700 hover:text-primary-600">
                 Contact
               </Link>
               <Link
                 to="/free-estimate"
-                className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors text-center"
-              >
+                className="bg-accent-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-600 transition-colors text-center"
+                  isActive('/about') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
                 Free Estimate
               </Link>
             </div>
