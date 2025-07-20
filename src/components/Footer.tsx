@@ -28,10 +28,9 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-neutral-400 hover:text-white transition-colors"
               >
-                <Facebook className="w-5 h-5" />
-ame="text-neutral-400 hover:text-white transition-colors"
-              >
-                {/* Add NextdoorlassName="text-neutral-300 hover:text-white">About Us</Link></li>
+                <Facebook classNameext-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><Link to="/about" className="text-neutral-300 hover:text-white">About Us</Link></li>
               <li><Link to="/services" className="text-neutral-300 hover:text-white">Services</Link></li>
               <li><Link to="/service-areas" className="text-neutral-300 hover:text-white">Service Areas</Link></li>
               <li><Link to="/faq" className="text-neutral-300 hover:text-white">FAQ</Link></li>
