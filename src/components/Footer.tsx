@@ -25,13 +25,14 @@ const Footer = () => {
               <a 
                 href="https://www.facebook.com/61578165693932" 
                 target="_blank" 
-               i" 
-                target="_blank" 
                 rel="noopener noreferrer"
                 className="text-neutral-400 hover:text-white transition-colors"
               >
-                <Instagram className="w-5 h-5" />
-              </              <li><Link to="/about" className="text-neutral-300 hover:text-white">About Us</Link></li>
+                <Facebook classors"
+              >
+                <Instagram classite transition-colors"
+              >
+                {/* You can add a Nextdoor SVG icon here00 hover:text-white">About Us</Link></li>
               <li><Link to="/services" className="text-neutral-300 hover:text-white">Services</Link></li>
               <li><Link to="/service-areas" className="text-neutral-300 hover:text-white">Service Areas</Link></li>
               <li><Link to="/faq" className="text-neutral-300 hover:text-white">FAQ</Link></li>
