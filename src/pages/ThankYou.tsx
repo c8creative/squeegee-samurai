@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { CheckCircle, Home, Phone, Mail } from 'lucide-react';
+import { Phone, Mail, CheckCircle, Home } from 'lucide-react';
 
 const ThankYou = () => {
   return (
@@ -24,16 +23,13 @@ const ThankYou = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-<a
-  href="https://squeegee-samurai.com"
-  className="flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors"
->
             <a
-              href="tel:5403351059"
-              className="flex items-center justify-center bg-accent-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-accent-700 transition-colors"
+              href="https://squeegee-samurai.com"
+              className="flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Call (540) 335-1059
+              <Home className="w-5 h-5 mr-2" />
+              Return to Home
+            </l (540) 335-1059
             </a>
             <a
               href="mailto:james@squeegee-samurai.com"
