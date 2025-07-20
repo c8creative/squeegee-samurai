@@ -6,15 +6,16 @@ import { hashPassword, validatePassword, setCurrentUser } from '../utils/auth';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     password: '',
     confirmPassword: '',
-    role: ROLES.USER,
+    windowType: '',
+    windowSize: '',
     address: '',
     windowsPerStory: '',
-    windowType: '',
     screens: false,
     tier: '',
   });
