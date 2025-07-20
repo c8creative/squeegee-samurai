@@ -12,7 +12,7 @@ const ThankYou = () => {
           <p className="text-lg text-neutral-600 mb-6">
             Your submission has been received. We'll be in touch soon to discuss your window cleaning needs.
           </p>
-          
+
           <div className="bg-primary-50 rounded-lg p-6 mb-6">
             <h3 className="font-semibold text-primary-900 mb-2">What happens next?</h3>
             <ul className="text-left text-primary-800 space-y-2">
@@ -22,7 +22,7 @@ const ThankYou = () => {
               <li>• You'll receive a detailed quote for your project</li>
             </ul>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/"
