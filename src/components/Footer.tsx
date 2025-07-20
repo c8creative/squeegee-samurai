@@ -11,24 +11,15 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <img
-                src={logo}
-                alt="Squeegee Samurai Logo"
-                className="h-16 w-auto"
-              />
+              <img src={logo} alt="Squeegee Samurai Logo" className="h-16 w-auto" />
             </div>
             <p className="text-neutral-300 mb-4">
               Professional window cleaning services with an eco-friendly approach, 
               serving Loudoun County, Virginia.
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://www.facebook.com/   https://instagram.com/squeegeesamurai
-              <a 
-                href="https://nextdoor.com/pages/squeegee-sam    </div>
-          </div>
-
-          {/* Quick Links */}
+              <a href="https://www.facebook.com/61578165693932" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors">
+                <Facebook className="w-5 h-5"        {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -66,10 +57,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="mt-6">
-              <Link
-                to="/free-estimate"
-                className="bg-accent-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-700 transition-colors inline-block"
-              >
+              <Link to="/free-estimate" className="bg-accent-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-700 transition-colors inline-block">
                 Get Free Estimate
               </Link>
             </div>
