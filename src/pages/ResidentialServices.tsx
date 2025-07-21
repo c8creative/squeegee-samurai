@@ -83,8 +83,10 @@ const ResidentialServices = () => {
                   <p className="text-neutral-600 mb-4">Exterior window cleaning only</p>
                   <ul className="text-sm text-neutral-600 space-y-1">
                     <li>• Exterior window cleaning</li>
+                    <li>• Frame cleaning</li>
+                    <li>• Hard water removal</li>
+                    <li>• 5-stage pure water rinse</li>
                     <li>• Sill wiping</li>
-                    <li>• Basic spot removal</li>
                   </ul>
                 </div>
                 
@@ -96,9 +98,11 @@ const ResidentialServices = () => {
                   <p className="text-neutral-600 mb-4">Interior and exterior cleaning</p>
                   <ul className="text-sm text-neutral-600 space-y-1">
                     <li>• Interior & exterior cleaning</li>
-                    <li>• Screen cleaning</li>
-                    <li>• Sill & frame cleaning</li>
-                    <li>• Spot & stain removal</li>
+                    <li>• Track detailing</li>
+                    <li>• Frame & Screen cleaning</li>
+                    <li>• Hardwater, spot, & stain removal</li>
+                    <li>• 5-stage pure water rinse</li>
+                    <li>• Sill wiping</li>
                   </ul>
                 </div>
                 
@@ -107,8 +111,9 @@ const ResidentialServices = () => {
                   <p className="text-neutral-600 mb-4">Complete service plus extras</p>
                   <ul className="text-sm text-neutral-600 space-y-1">
                     <li>• Everything in Complete Package</li>
+                    <li>• Gutter and facade cleaning</li>
                     <li>• Mirror cleaning</li>
-                    <li>• Glass door cleaning</li>
+                    <li>• Glass door & fixture cleaning</li>
                   </ul>
                 </div>
               </div>
