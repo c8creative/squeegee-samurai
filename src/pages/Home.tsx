@@ -5,7 +5,7 @@ import { Shield, Leaf, Star, Phone, CheckCircle, Users, Building, Utensils, Exte
 const Home = () => {
   const partners = [
     {
-      name: 'The Parasocial Club',
+      name: 'Play The Par Social Club',
       url: 'https://playtheparsocialclub.com/',
       description: 'Entertainment & Media Partner'
     },
