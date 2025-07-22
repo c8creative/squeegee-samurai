@@ -20,6 +20,7 @@ import Dashboard from './pages/Dashboard';
 import Jobs from './pages/Jobs';
 import Unauthorized from './pages/Unauthorized';
 import ThankYou from './pages/ThankYou';
+import NowHiring from './pages/NowHiring';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/now-hiring" element={<NowHiring />} />
             
             {/* Protected Routes */}
             <Route 
