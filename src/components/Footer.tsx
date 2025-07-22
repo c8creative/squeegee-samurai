@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Nextdoor, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -15,13 +15,13 @@ const Footer = () => {
               Bringing the precision and dedication of the samurai to modern window cleaning.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+              <a href="facebook.com/squeegeesamurai" className="text-neutral-400 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="https://nextdoor.com/pages/squeegee-samurai-leesburg-va/" className="text-neutral-400 hover:text-white transition-colors">
+                <Nextdoor className="w-5 h-5" />
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+              <a href="instagram.com/squeegeesamurai" className="text-neutral-400 hover:text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
