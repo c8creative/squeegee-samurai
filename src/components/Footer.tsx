@@ -15,8 +15,12 @@ const Footer = () => {
               Bringing the precision and dedication of the samurai to modern window cleaning.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com/squeegeesamurai" target="_blank" rel="noopener noreferrer">
-                <Facebook className="w        {/* Quick Links */}
+              https://facebook.com/squeegeesamurai
+              https://instagram.com/squeegeesamurai
+            </div>
+          </div>
+
+          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
