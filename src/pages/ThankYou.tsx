@@ -1,13 +1,23 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Phone, Mail, CheckCircle, Home } from 'lucide-react';
 
 const ThankYou = () => {
+
+  const location = useLocation();
+  const estimatedQuote = location.state?.estimatedQuote;
+
   return (
     <div className="min-h-screen bg-neutral-50 py-12">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg shadow-lg p-8 text-center">
           <CheckCircle className="w-16 h-16 text-accent-500 mx-auto mb-6" />
           <h1 className="text-3xl font-bold text-neutral-900 mb-4">Thank You!</h1>
+          {estimatedQuote !== undefined && (
+          <div className="text-2xl font-bold text-accent-600 mt-4">
+            Your Estimated Quote: ${estimatedQuote.toFixed(2)}
+          </div>
+        )}
           <p className="text-lg text-neutral-600 mb-6">
             Your submission has been received. We'll be in touch soon to discuss your window cleaning needs.
           </p>
@@ -23,7 +33,6 @@ const ThankYou = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            https://squeegee-samurai.com
             <a
               href="tel:5403351059"
               className="flex items-center justify-center bg-accent-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-accent-700 transition-colors"

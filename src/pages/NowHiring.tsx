@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { Briefcase, MapPin, Clock, DollarSign, CheckCircle, Send, Users, Building } from 'lucide-react';
 
 const NowHiring = () => {
@@ -101,6 +102,7 @@ const NowHiring = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you would typically send the application data to your backend
+
     console.log('Application submitted:', applicationData);
     alert('Thank you for your application! We\'ll be in touch soon.');
     setApplicationData({

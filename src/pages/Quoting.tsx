@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, DollarSign, CheckCircle, Phone, Mail } from 'lucide-react';
 
+/* this quoting tool routes back to log-in. all quoting is actually done in freeestimate.tsx */
+
 const Quoting = () => {
   const [formData, setFormData] = useState({
     countType: 'windows',

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
@@ -19,12 +20,31 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Contact Form Data:', formData);
-    setIsSubmitted(true);
-  };
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+
+      const templateParams = {
+        fullName: formData.name,
+        emailAdd: formData.email,
+        phoneNum: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      emailjs.send(
+        'service_kbpzqjx',      
+        'template_2pclpef',     
+        templateParams,
+        'evFRXqG19P9hQMhwR'      
+      )
+      .then(() => {
+        setIsSubmitted(true);   
+      })
+      .catch((error) => {
+        alert('Failed to send message: ' + error.text);
+        console.error('EmailJS error:', error);
+      });
+    };
 
   if (isSubmitted) {
     return (
