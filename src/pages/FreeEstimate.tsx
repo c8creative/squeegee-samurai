@@ -1,175 +1,289 @@
 import React, { useState } from 'react';
-import { Upload, X, CheckCircle, Phone, Mail } from 'lucide-react';
+import emailjs from 'emailjs-com';
+import { useNavigate } from 'react-router-dom';
 
 const FreeEstimate = () => {
+  const navigate = useNavigate();
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+
+
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '',
     address: '', city: '', zipCode: '', propertyType: '',
-    serviceType: '', windowCount: '', stories: '', hasScreens: '',
-    frequency: '', additionalServices: [], specialRequests: '',
+    serviceType: '', windowCount: '', stories: '', screenCount: '',
+    frequency: '', additionalServices: [], specialRequests: '', uploadedFile,
     preferredContact: 'phone', bestTimeToCall: ''
   });
-
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleCheckboxChange = (service: string) => {
-    setFormData(prev => ({
-      ...prev,
-      additionalServices: prev.additionalServices.includes(service)
-        ? prev.additionalServices.filter(s => s !== service)
-        : [...prev.additionalServices, service]
-    }));
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const windowCount = parseInt(formData.windowCount) || 0;
+  const screenCount = parseInt(formData.screenCount) || 0;
+  const estimatedQuote = (windowCount * 10) + (screenCount * 5) + 50;
+
+    const templateParams = {
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    email: formData.email,
+    phone: formData.phone,
+    address: formData.address,
+    city: formData.city,
+    zipCode: formData.zipCode,
+    propertyType: formData.propertyType,
+    serviceType: formData.serviceType,
+    stories: formData.stories,
+    windowCount: formData.windowCount,
+    screenCount: formData.screenCount,
+    additionalServices: formData.additionalServices.join(', '),
+    uploadedPhoto: formData.uploadedFile,
+    preferredContact: formData.preferredContact,
+    bestTimeToCall: formData.bestTimeToCall,
+    estimatedQuote: `$${estimatedQuote.toFixed(2)}`
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    setUploadedFiles(prev => [...prev, ...files]);
-  };
+    e.preventDefault();
+    const form = e.currentTarget;
 
-  const removeFile = (index: number) => {
-    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
-  };
+    const data = new FormData(form);
+    data.append('form-name', 'free-estimate');
+    formData.additionalServices.forEach(service => data.append('additionalServices', service));
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data as any).toString(),
+    })
+
+      emailjs.send(
+      'service_kbpzqjx',      // Replace with owner EmailJS service ID
+      'template_kiwbkaf',     // Replace with owner EmailJS template ID
+      templateParams,
+      'evFRXqG19P9hQMhwR'       // Replace owner EmailJS public key
+    )
+
+    .then(() => navigate('/thank-you', { state: { estimatedQuote } }))
+    .catch((error) => alert('Submission failed: ' + error));
+
+
+};
 
   return (
-    <form
-      name="free-estimate"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      encType="multipart/form-data"
-      action="/thank-you"
-      className="space-y-6"
-    >
-      <input type="hidden" name="form-name" value="free-estimate" />
-      <input type="hidden" name="bot-field" />
 
-      <h2 className="text-2xl font-bold">Get Your Free Estimate</h2>
-      <p>Tell us about your project and we'll provide a detailed quote within 24 hours.</p>
+    <div className="min-h-screen bg-neutral-50 px-4 py-8">
+        <div className="text-center mb-6">
+          <h2 className="text-4xl text-orange-500 font-bold mb-4">Get Your Free Estimate</h2>
+          <p>Tell us about your project and we'll provide a free estimated quote and a detailed quote within 24 hours.</p>
+    </div>
+      <div className="flex justify-center">
+      <div className="w-full max-w-4xl bg-white p-8 rounded-xl shadow-md">
+          <form
+            name="free-estimate"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+            className="space-y-6"
+          >
+            <input type="hidden" name="form-name" value="free-estimate" />
+            <input type="hidden" name="bot-field" />
 
-      {/* Contact Info */}
-      <h3>Contact Information</h3>
-      <input name="firstName" placeholder="First Name *" required onChange={handleInputChange} />
-      <input name="lastName" placeholder="Last Name *" required onChange={handleInputChange} />
-      <input name="email" type="email" placeholder="Email Address *" required onChange={handleInputChange} />
-      <input name="phone" placeholder="Phone Number *" required onChange={handleInputChange} />
+            {/* Contact Info */}
+            {/* Contact Info Bubble */}
 
-      {/* Property Info */}
-      <h3>Property Information</h3>
-      <input name="address" placeholder="Property Address *" required onChange={handleInputChange} />
-      <input name="city" placeholder="City *" required onChange={handleInputChange} />
-      <input name="zipCode" placeholder="ZIP Code *" required onChange={handleInputChange} />
-      <select name="propertyType" required onChange={handleInputChange}>
-        <option value="">Select property type</option>
-        <option>Single Family Home</option>
-        <option>Townhouse</option>
-        <option>Condominium</option>
-        <option>Apartment</option>
-        <option>Office Building</option>
-        <option>Retail Store</option>
-        <option>Restaurant</option>
-        <option>Other Commercial</option>
-      </select>
-      <select name="serviceType" required onChange={handleInputChange}>
-        <option value="">Select service type</option>
-        <option>Residential</option>
-        <option>Commercial</option>
-        <option>Restaurant</option>
-      </select>
+              <h3 className="text-lg font-bold mb-4">Contact Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  name="firstName"
+                  placeholder="First Name *"
+                  required
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-md p-2 w-full"
+                />
+                <input
+                  name="lastName"
+                  placeholder="Last Name *"
+                  required
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-md p-2 w-full"
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email Address *"
+                  required
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-md p-2 w-full"
+                />
+                <input
+                  name="phone"
+                  placeholder="Phone Number *"
+                  required
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-md p-2 w-full"
+                />
+              </div>
 
-      {/* Project Details */}
-      <h3>Project Details</h3>
-      <select name="windowCount" required onChange={handleInputChange}>
-        <option value="">Select window count</option>
-        <option>1-10 windows</option>
-        <option>11-20 windows</option>
-        <option>21-30 windows</option>
-        <option>31-50 windows</option>
-        <option>50+ windows</option>
-      </select>
-      <select name="stories" required onChange={handleInputChange}>
-        <option value="">Select stories</option>
-        <option>1 Story</option>
-        <option>2 Stories</option>
-        <option>3 Stories</option>
-        <option>4+ Stories</option>
-      </select>
-      <select name="hasScreens" required onChange={handleInputChange}>
-        <option value="">Do windows have screens?</option>
-        <option>Yes, most windows have screens</option>
-        <option>Some windows have screens</option>
-        <option>No screens</option>
-        <option>Not sure</option>
-      </select>
-      <select name="frequency" onChange={handleInputChange}>
-        <option value="">Desired Service Frequency</option>
-        <option>One-time service</option>
-        <option>Monthly</option>
-        <option>Bi-monthly</option>
-        <option>Quarterly</option>
-        <option>Twice per year</option>
-        <option>Once per year</option>
-      </select>
+              {/* Property Info Bubble */}
+                <h3 className="text-lg font-bold mb-4">Property Information</h3>
 
-      {/* Additional Services */}
-      <h3>Additional Services</h3>
-      {['Screen cleaning', 'Window sill cleaning', 'Frame cleaning', 'Pressure washing', 'Gutter cleaning', 'Solar panel cleaning'].map(service => (
-        <label key={service}>
-          <input
-            type="checkbox"
-            name="additionalServices"
-            value={service}
-            onChange={() => handleCheckboxChange(service)}
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                  <input
+                    name="address"
+                    placeholder="Property Address *"
+                    required
+                    onChange={handleInputChange}
+                    className="border border-gray-300 rounded-md p-2 w-full"
+                  />
+                  <input
+                    name="city"
+                    placeholder="City *"
+                    required
+                    onChange={handleInputChange}
+                    className="border border-gray-300 rounded-md p-2 w-full"
+                  />
+                  <input
+                    name="zipCode"
+                    placeholder="ZIP Code *"
+                    required
+                    onChange={handleInputChange}
+                    className="border border-gray-300 rounded-md p-2 w-full"
+                  />
+                  <select
+                    name="propertyType"
+                    required
+                    onChange={handleInputChange}
+                    className="border border-gray-300 rounded-md p-2 w-full"
+                  >
+                    <option value="">Select property</option>
+                    <option>Single Family Home</option>
+                    <option>Townhouse</option>
+                    <option>Condominium</option>
+                    <option>Apartment</option>
+                    <option>Office Building</option>
+                    <option>Retail Store</option>
+                    <option>Restaurant</option>
+                    <option>Other Commercial</option>
+                  </select>
+                  <select
+                    name="serviceType"
+                    required
+                    onChange={handleInputChange}
+                    className="border border-gray-300 rounded-md p-2 w-full"
+                  >
+                    <option value="">Select service</option>
+                    <option>Residential</option>
+                    <option>Commercial</option>
+                    <option>Restaurant</option>
+                  </select>
+                </div>
+
+
+            {/* Project Details */}
+            <h3 className="text-lg font-bold mb-4">Project Details</h3>
+            <div className='mb-6 max-w-md'>
+              <label htmlFor="windowCount" className="block text-sm font-medium text-neutral-700 mb-2">
+                Number of Windows</label>
+              <input
+                type="number"
+                name="windowCount"
+                id="windowCount"
+                min="1"
+                required
+                value={formData.windowCount}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-neutral-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:outline-none"
+                placeholder='Enter a number (min 1)'        
+              />
+            </div>
+            <select name="stories" required onChange={handleInputChange}>
+              <option value="">Select stories</option>
+              <option>1 Story</option>
+              <option>2 Stories</option>
+              <option>3 Stories</option>
+              <option>4+ Stories</option>
+            </select>
+            <div className='mb-6 max-w-md'>
+              <label htmlFor="screenCount" className="block text-sm font-medium text-neutral-700 mb-2">
+                Number of Screens</label>
+              <input
+                type="number"
+                name="screenCount"
+                id="screenCount"
+                min="1"
+                required
+                value={formData.screenCount}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-neutral-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:outline-none"
+                placeholder='Enter a number (min 1)'        
+              />
+            </div>
+            <select name="frequency" onChange={handleInputChange}>
+              <option value="">Desired Service Frequency</option>
+              <option>One-time service</option>
+              <option>Quarterly</option>
+              <option>Monthly</option>
+            </select>
+
+            <h3 className="text-lg font-bold mb-4">File Upload</h3>
+            <input 
+            type="file" 
+            id="fileInput" 
+            accept="image/*,application/pdf" 
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                setUploadedFile(e.target.files[0]);
+              }
+            }} 
           />
-          {service}
-        </label>
-      ))}
 
-      {/* File Upload */}
-      <h3>Project Photos</h3>
-      <input type="file" name="photos" multiple onChange={handleFileUpload} />
-      {uploadedFiles.length > 0 && (
-        <ul>
-          {uploadedFiles.map((file, index) => (
-            <li key={index}>
-              {file.name}{' '}
-              <button type="button" onClick={() => removeFile(index)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )}
+            {/* Additional Services */}
+            <h3 className="text-lg font-bold mb-4">Additional Services</h3>
+            <div className='flex flex-col space-y-2'>
+                    {[' Screen cleaning', ' Window sill cleaning', ' Frame cleaning', ' Pressure washing', ' Gutter cleaning', ' Solar panel cleaning'].map(service => (
+              <label key={service}>
+                <input
+                  type="checkbox"
+                  name="additionalServices"
+                  value={service}
+                />
+                {service}
+              </label>
+            ))}
+            </div>
 
-      {/* Special Requests */}
-      <textarea
-        name="specialRequests"
-        placeholder="Special Requests or Additional Information"
-        onChange={handleInputChange}
-      />
 
-      {/* Contact Preferences */}
-      <h3>Contact Preferences</h3>
-      <select name="preferredContact" required onChange={handleInputChange}>
-        <option value="phone">Phone</option>
-        <option value="email">Email</option>
-        <option value="text">Text Message</option>
-      </select>
-      <select name="bestTimeToCall" onChange={handleInputChange}>
-        <option value="">Best Time to Call</option>
-        <option>Any time</option>
-        <option>Morning (8 AM - 12 PM)</option>
-        <option>Afternoon (12 PM - 5 PM)</option>
-        <option>Evening (5 PM - 8 PM)</option>
-        <option>Weekends only</option>
-      </select>
+            {/* Contact Preferences */}
+            <h3 className="text-lg font-bold mb-4">Contact Information</h3>
+            <select name="preferredContact" required onChange={handleInputChange}>
+              <option value="phone">Phone</option>
+              <option value="email">Email</option>
+              <option value="text">Text Message</option>
+            </select>
+            <select name="bestTimeToCall" onChange={handleInputChange}>
+              <option value="">Best Time to Call</option>
+              <option>Any time</option>
+              <option>Morning (8 AM - 12 PM)</option>
+              <option>Afternoon (12 PM - 5 PM)</option>
+              <option>Evening (5 PM - 8 PM)</option>
+              <option>Weekends only</option>
+            </select>
 
-      {/* Submit */}
-      <button type="submit">Get My Free Estimate</button>
-      <p>We'll contact you within 24 hours with your detailed quote.</p>
-    </form>
+            {/* Submit */}
+            <button type="submit"
+            className='block w-full bg-white border-2 border-orange text-orange px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-accent-600 transition-colors'>Get My Free Estimate</button>
+            <p className='text-center'>*Please note that all quotes provided are estimates and are subject to change upon on-site evaluation. 
+              Final pricing may vary based on factors such as: Window height, Window condition, Special equipment requirements, Accessibility challenges. 
+              Windows located at greater heights or in hard-to-reach areas may incur additional charges due to the increased time, labor, and safety 
+              measures required. We strive to provide accurate estimates, but reserve the right to adjust pricing to reflect the actual scope of work.</p>
+            <p className='text-center'>We'll contact you within 24 hours with your detailed quote.</p>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
