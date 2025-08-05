@@ -1,58 +1,35 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogIn, Eye, EyeOff, User, Lock } from 'lucide-react';
-import { comparePassword, setCurrentUser } from '../utils/auth';
+import { setCurrentUser } from '../utils/auth';
+import { Jobs } from './Jobs.tsx';
+
+// If using Vite, set VITE_API_BASE in .env (e.g., VITE_API_BASE=http://localhost:8080)
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8080';
+
+type FormErrors = {
+  email?: string;
+  password?: string;
+  general?: string;
+};
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const mockUsers = [
-    {
-      id: 1,
-      fullName: 'Admin User',
-      email: 'admin@squeegee-samurai.com',
-      passwordHash: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-      role: 'admin',
-      phone: '540-335-1059'
-    },
-    {
-      id: 2,
-      fullName: 'Employee User',
-      email: 'employee@squeegee-samurai.com',
-      passwordHash: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-      role: 'employee',
-      phone: '540-335-1059'
-    },
-    {
-      id: 3,
-      fullName: 'Test User',
-      email: 'user@test.com',
-      passwordHash: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-      role: 'user',
-      phone: '540-555-0123'
-    }
-  ];
-
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setCredentials(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
+    setCredentials(prev => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
+  const validateForm = (): FormErrors => {
+    const newErrors: FormErrors = {};
     if (!credentials.email) {
       newErrors.email = 'Email is required';
     } else if (!credentials.email.includes('@')) {
@@ -64,7 +41,7 @@ const Login = () => {
     return newErrors;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -76,31 +53,38 @@ const Login = () => {
     setErrors({});
 
     try {
-      const user = mockUsers.find(u => u.email === credentials.email);
-      if (!user) {
-        setErrors({ email: 'User not found' });
-        setIsLoading(false);
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // If you later use cookies/session, also add: credentials: 'include'
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      });
+
+      if (!res.ok) {
+        const msg = await res.text();
+        setErrors({ general: msg || 'Login failed' });
         return;
       }
 
-      const isMatch = await comparePassword(credentials.password, user.passwordHash);
-      if (!isMatch) {
-        setErrors({ password: 'Incorrect password' });
-        setIsLoading(false);
-        return;
-      }
+      // Backend returns: { id, email, fullName, role, phone }
+      const user = await res.json();
+      setCurrentUser(user); // your existing storage helper
 
-      const { passwordHash, ...userWithoutPassword } = user;
-      setCurrentUser(userWithoutPassword);
-
-      if (user.role === 'admin') {
-        navigate('/dashboard');
-      } else if (user.role === 'employee') {
-        navigate('/jobs');
-      } else {
-        navigate('/quote');
+      //  ADMIN | EMPLOYEE | CUSTOMER
+      switch (user.role) {
+        case 'ADMIN':
+          navigate('/dashboard');
+          break;
+        case 'EMPLOYEE':
+          navigate('/jobs');
+          break;
+        default:
+          navigate('/free-estimate');
       }
-    } catch (error) {
+    } catch {
       setErrors({ general: 'Login failed. Please try again.' });
     } finally {
       setIsLoading(false);

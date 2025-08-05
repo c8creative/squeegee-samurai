@@ -19,6 +19,7 @@ import Quoting from './pages/Quoting';
 import Dashboard from './pages/Dashboard';
 import Jobs from './pages/Jobs';
 import Unauthorized from './pages/Unauthorized';
+import SignUpTy from './components/SignUpTy';
 import ThankYou from './pages/ThankYou';
 import NowHiring from './pages/NowHiring';
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route path="/signup-ty" element={<SignUpTy />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/now-hiring" element={<NowHiring />} />
             

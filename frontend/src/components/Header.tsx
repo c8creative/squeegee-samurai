@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { getCurrentUser, logout } from '../utils/auth';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
-import logo from '../assets/images/squeegee-samurai-logo.jpg'
+import logo from '../assets/images/squeegee-samurai-logo.jpg';
+import logo2 from '../assets/images/squeegee-samurai-logo2.png';
+
 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
+
+  const user = getCurrentUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login'); //change this to a logged out page at some point
+  }
+
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -30,6 +42,22 @@ const Header = () => {
             <div className="hidden md:block">
               <span>Serving Loudoun County, Virginia</span>
             </div>
+            <div className="hidden md:flex items-center space-x-4">
+            {user && (
+              <>
+                <span className="border-l border-white pl-4">
+                  Hello, {user.fullName}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="text-white underline hover:text-neutral-300 text-sm"
+                >
+                  Logout
+                </button>
+              </>
+            )}
+          </div>
+
           </div>
         </div>
       </div>
@@ -40,9 +68,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center relative z-10">
             <img
-              src={logo}
+              src={logo2}
               alt="Squeegee Samurai Logo"
-              className="h-20 w-auto"
+              className="h-20 w-auto scale-125 object-contain"
             />
           </Link>
 
@@ -127,22 +155,26 @@ const Header = () => {
                 isActive('/now-hiring') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
               }`}
             >
-              Now Hiring
+              Careers
             </Link>
-            <Link
-              to="/login"
-              className={`font-medium transition-colors ${
-                isActive('/login') ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
-              }`}
-            >
-              Login
-            </Link>
+
+            
             <Link
               to="/free-estimate"
               className="bg-accent-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-600 transition-colors"
             >
               Free Estimate
             </Link>
+            
+            {user?.role === 'EMPLOYEE' && (
+              <Link
+              to="/jobs"
+              className="bg-accent-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-accent-600 transition-colors"
+            >
+              Portal
+            </Link>
+            )}
+
           </div>
 
           {/* Mobile menu button */}
@@ -200,13 +232,32 @@ const Header = () => {
               >
                 Now Hiring
               </Link>
-              <Link 
-                to="/login" 
-                onClick={() => setIsMenuOpen(false)}
+              
+              {user ? (
+  <>
+              <span className="font-medium text-neutral-700">
+                Hello, {user.fullName}
+              </span>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleLogout();
+                }}
                 className="font-medium text-neutral-700 hover:text-primary-600"
               >
-                Login
-              </Link>
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link 
+              to="/login" 
+              onClick={() => setIsMenuOpen(false)}
+              className="font-medium text-neutral-700 hover:text-primary-600"
+            >
+              Login
+            </Link>
+          )}
+
               <Link
                 to="/free-estimate"
                 onClick={() => setIsMenuOpen(false)}
