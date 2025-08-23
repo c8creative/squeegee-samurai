@@ -15,6 +15,19 @@ const FreeEstimate = () => {
     preferredContact: 'phone', bestTimeToCall: ''
   });
 
+  const COMMERCIAL_PROPS = new Set([
+  "Office Building",
+  "Retail Store",
+  "Restaurant",
+  "Other Commercial",
+]);
+
+function inferSegment(propertyType?: string) {
+  if (!propertyType) return undefined;
+  return COMMERCIAL_PROPS.has(propertyType) ? "commercial" : "residential";
+}
+
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -25,6 +38,7 @@ const FreeEstimate = () => {
   const windowCount = parseInt(formData.windowCount) || 0;
   const screenCount = parseInt(formData.screenCount) || 0;
   const estimatedQuote = (windowCount * 10) + (screenCount * 5) + 50;
+
 
     const templateParams = {
     firstName: formData.firstName,
@@ -169,16 +183,16 @@ const FreeEstimate = () => {
                     <option>Other Commercial</option>
                   </select>
                   <select
-                    name="serviceType"
-                    required
-                    onChange={handleInputChange}
-                    className="border border-gray-300 rounded-md p-2 w-full"
-                  >
-                    <option value="">Select service</option>
-                    <option>Residential</option>
-                    <option>Commercial</option>
-                    <option>Restaurant</option>
-                  </select>
+                  name="serviceScope"
+                  required
+                  defaultValue="both"
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-md p-2 w-full"
+                >
+                  <option value="both">Interior + Exterior (recommended)</option>
+                  <option value="interior">Interior only</option>
+                  <option value="exterior">Exterior only</option>
+                </select>
                 </div>
 
 
