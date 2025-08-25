@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Leaf, Star, Phone, CheckCircle, Users, Building, Utensils, ExternalLink } from 'lucide-react';
+import logo1 from '../assets/images/squeegeesamurai-logo1.png'
+
 
 const Home = () => {
   const partners = [
@@ -52,6 +54,10 @@ const Home = () => {
       <section className="py-16 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
+            <img
+              src={logo1}
+              alt="Squeegee Samurai Logo"
+              className="mx-auto mb-6 h-32 w-auto object-contain md:h-40"            />
             <h2 className="text-3xl font-bold text-neutral-900 mb-4">Why Choose Squeegee Samurai?</h2>
             <p className="text-lg text-neutral-600">Professional service with a commitment to excellence and environmental responsibility</p>
           </div>

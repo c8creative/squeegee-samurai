@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getCurrentUser, logout } from '../utils/auth';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
-import logo from '../assets/images/squeegee-samurai-logo.jpg';
-import logo2 from '../assets/images/squeegee-samurai-logo2.png';
+import logo4 from '../assets/images/squeegee-word-logo.png'
+
 
 
 
@@ -39,7 +39,7 @@ const Header = () => {
                 <span>james@squeegee-samurai.com</span>
               </div>
             </div>
-            <div className="hidden md:block">
+            <div className="hidden md:block ml-auto">
               <span>Serving Loudoun County, Virginia</span>
             </div>
             <div className="hidden md:flex items-center space-x-4">
@@ -68,9 +68,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center relative z-10">
             <img
-              src={logo2}
+              src={logo4}
               alt="Squeegee Samurai Logo"
-              className="h-20 w-auto scale-125 object-contain"
+              className="h-20 w-auto scale-120 object-contain"
             />
           </Link>
 
