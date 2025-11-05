@@ -1,3 +1,4 @@
+import HolidayLighting from './pages/HolidayLighting';
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -39,6 +40,7 @@ function App() {
           <HelmetProvider>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/holiday-lighting" element={<HolidayLighting />} />
             <Route path="/leesburg-window-cleaning" element={<LeesburgHome />} />
             <Route path="/ashburn-window-cleaning" element={<AshburnHome />} />
             <Route path="/sterling-window-cleaning" element={<SterlingHome />} />
