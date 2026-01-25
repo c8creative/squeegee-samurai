@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Phone, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 
 const PHONE_DISPLAY = "540-335-1059";
 const PHONE_TEL = "5403351059";
@@ -79,7 +79,10 @@ export default function Header() {
   return (
     <>
       {/* Skip to content for keyboard users */}
-      <main
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-slate-900"
+      >
         Skip to content
       </a>
 
@@ -87,10 +90,14 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Left: Logo */}
-            <div className="flex items-center gap-2">
-              <Link to="/" className="group flex items-center gap-2">
-                <Sparkles className="h-6 w-6 text-slate-900 transition-colors group-hover:text-slate-700" />
-                <span className="text-base font-semibold tracking-tight text-slate-900">
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center gap-2">
+                <img 
+                  src="/images/squeegee-samurai-logo.png" 
+                  alt="Squeegee Samurai" 
+                  className="h-12 w-auto"
+                />
+                <span className="text-lg font-bold tracking-tight text-slate-900">
                   Squeegee Samurai
                 </span>
               </Link>
@@ -264,8 +271,12 @@ export default function Header() {
               className="flex items-center gap-2"
               onClick={() => setMobileOpen(false)}
             >
-              <Sparkles className="h-6 w-6 text-slate-900" />
-              <span className="text-base font-semibold tracking-tight text-slate-900">
+              <img 
+                src="/images/squeegee-samurai-logo.png" 
+                alt="Squeegee Samurai" 
+                className="h-10 w-auto"
+              />
+              <span className="text-base font-bold tracking-tight text-slate-900">
                 Squeegee Samurai
               </span>
             </Link>

@@ -4,30 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Japanese-inspired color palette
+        // Brand colors: Blue #3b9eb3, Orange #ff6b35
         primary: {
-          50: '#f0f4f8',
-          100: '#d9e2ec',
-          200: '#bcccdc',
-          300: '#9fb3c8',
-          400: '#829ab1',
-          500: '#627d98', // Main blue-gray
-          600: '#486581',
-          700: '#334e68',
-          800: '#243b53',
-          900: '#102a43',
+          50: '#edf8fa',
+          100: '#d4eff4',
+          200: '#a9dfe9',
+          300: '#7dcfde',
+          400: '#52bfd3',
+          500: '#3b9eb3', // Brand blue
+          600: '#2f7e8f',
+          700: '#235f6b',
+          800: '#183f48',
+          900: '#0c2024',
         },
         accent: {
-          50: '#fff8f1',
-          100: '#feecdc',
-          200: '#fcd9bd',
-          300: '#fdba8c',
-          400: '#ff8a4c',
-          500: '#ff6b35', // Warm orange-red
-          600: '#e85d2a',
-          700: '#c44c1f',
-          800: '#9c3d16',
-          900: '#7a2e0e',
+          50: '#fff4ef',
+          100: '#ffe4d9',
+          200: '#ffc9b3',
+          300: '#ffae8d',
+          400: '#ff8c61',
+          500: '#ff6b35', // Brand orange
+          600: '#e55a2a',
+          700: '#bf4a23',
+          800: '#993b1c',
+          900: '#732c15',
         },
         neutral: {
           50: '#f7fafc',

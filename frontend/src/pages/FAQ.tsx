@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './Home.css';
 
 const FAQ = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
@@ -135,44 +136,47 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-6 border-b-2 border-primary-600 pb-2">
-                {category.category}
-              </h2>
-              
-              <div className="space-y-4">
-                {category.questions.map((faq, questionIndex) => {
-                  const globalIndex = categoryIndex * 100 + questionIndex;
-                  const isOpen = openQuestion === globalIndex;
-                  
-                  return (
-                    <div key={questionIndex} className="bg-white border border-neutral-200 rounded-lg shadow-sm">
-                      <button
-                        onClick={() => toggleQuestion(globalIndex)}
-                        className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-neutral-50 transition-colors"
-                      >
-                        <span className="font-semibold text-neutral-900 pr-4">{faq.question}</span>
-                        {isOpen ? (
-                          <ChevronUp className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-primary-600 flex-shrink-0" />
+      <section className="parallax-clouds py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Translucent card container */}
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-6 sm:p-10">
+            {faqs.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="mb-12 last:mb-0">
+                <h2 className="text-2xl font-bold text-neutral-900 mb-6 border-b-2 border-primary-600 pb-2">
+                  {category.category}
+                </h2>
+                
+                <div className="space-y-4">
+                  {category.questions.map((faq, questionIndex) => {
+                    const globalIndex = categoryIndex * 100 + questionIndex;
+                    const isOpen = openQuestion === globalIndex;
+                    
+                    return (
+                      <div key={questionIndex} className="bg-white/90 border border-neutral-200 rounded-lg shadow-sm">
+                        <button
+                          onClick={() => toggleQuestion(globalIndex)}
+                          className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-neutral-50/80 transition-colors rounded-lg"
+                        >
+                          <span className="font-semibold text-neutral-900 pr-4">{faq.question}</span>
+                          {isOpen ? (
+                            <ChevronUp className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                          ) : (
+                            <ChevronDown className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                          )}
+                        </button>
+                        
+                        {isOpen && (
+                          <div className="px-6 pb-4">
+                            <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>
+                          </div>
                         )}
-                      </button>
-                      
-                      {isOpen && (
-                        <div className="px-6 pb-4">
-                          <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

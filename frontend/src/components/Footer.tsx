@@ -21,10 +21,22 @@ export default function Footer() {
             </p>
 
             <div className="flex space-x-4">
-              https://facebook.com/squeegeesamurai
+              <a
+                href="https://facebook.com/squeegeesamurai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-300 hover:text-white"
+                aria-label="Facebook"
+              >
                 <Facebook className="h-6 w-6" aria-hidden />
               </a>
-              https://instagram.com/squeegeesamurai
+              <a
+                href="https://instagram.com/squeegeesamurai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-300 hover:text-white"
+                aria-label="Instagram"
+              >
                 <Instagram className="h-6 w-6" aria-hidden />
               </a>
             </div>

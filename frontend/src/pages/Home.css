@@ -1,31 +1,66 @@
 .parallax-clouds {
-    --cloud-w: 250px;
+  position: relative;
+  overflow: hidden;
   
-    position: relative;
-    overflow: hidden;
-  
-    /* overlay (first) + image (second) */
-    background-image:
-      linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
-      url("/images/akatsuki-cloud-orng.png");
-    background-repeat: no-repeat, repeat;      /* overlay doesn’t repeat, image does */
-    background-size: auto, var(--cloud-w) auto;
-    background-position: 0 0, 0 12px;
-    background-attachment: scroll, fixed;      /* keep your parallax */
-  
-    animation: cloud-drift 60s linear infinite;
-    will-change: background-position;
+  /* Light gray/blue tinted background so white card is visible */
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+}
+
+/* Cloud layer base styles */
+.parallax-clouds::before,
+.parallax-clouds::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 0;
+}
+
+/* Layer 1: Sparse large clouds (back) */
+.parallax-clouds::before {
+  background-image: url("/images/akatsuki-cloud-orng.png");
+  background-size: 500px auto;
+  background-position: 0 0;
+  background-repeat: repeat;
+  opacity: 0.25;
+  animation: cloud-drift-1 80s linear infinite;
+}
+
+/* Layer 2: Sparse smaller clouds (front) */
+.parallax-clouds::after {
+  background-image: url("/images/akatsuki-cloud-orng.png");
+  background-size: 320px auto;
+  background-position: 200px 150px;
+  background-repeat: repeat;
+  opacity: 0.4;
+  animation: cloud-drift-2 55s linear infinite;
+  animation-delay: -25s;
+}
+
+/* Diagonal movement (45 degrees) */
+@keyframes cloud-drift-1 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-500px, -500px); }
+}
+
+@keyframes cloud-drift-2 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-320px, -320px); }
+}
+
+/* Content container needs to be above clouds */
+.parallax-clouds > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-clouds::before,
+  .parallax-clouds::after {
+    animation: none;
   }
-  
-  @keyframes cloud-drift {
-    from { background-position: 0 0,            0 12px; }
-    to   { background-position: 0 0, calc(var(--cloud-w) * -1) 12px; }
-  }
-  
-  @media (max-width: 767.98px) {
-    .parallax-clouds { background-attachment: scroll, scroll; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .parallax-clouds { animation: none; }
-  }
-  
+}

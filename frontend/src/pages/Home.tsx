@@ -24,47 +24,40 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gray-900 text-white">
-        {/* Manga edge lines */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-30"
-          style={{
-            // radiating spokes
-            backgroundImage:
-              "repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.9) 0deg 1.2deg, transparent 1.2deg 5deg)"
-          }}
-        />
-        {/* Hide the center so lines only show at the edges */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            // solid center (same as section bg) fading outward
-            background:
-              "radial-gradient(circle at center, #111827 0 32%, rgba(17,24,39,0) 45%)"
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* Hero Section with Parallax Background */}
+      <section
+        className="relative overflow-hidden text-white min-h-[600px] flex items-center"
+        style={{
+          backgroundImage: "url('/images/leesburg-storefront.png')",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover"
+        }}
+      >
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Crystal Clear Window Cleaning<br />
               <span className="text-accent-400">in Loudoun County, VA</span>
-              </h1>
+            </h1>
             <p className="text-xl md:text-2xl mb-8 text-white">
               Professional and eco-friendly window cleaning for homes and businesses
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-            to="/free-estimate"
-            className="bg-accent-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-600 transition-colors"
-            >
-              Get Free Estimate
-            </Link>
+              <Link
+                to="/free-estimate"
+                className="bg-primary-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-600 transition-colors"
+              >
+                Get Free Estimate
+              </Link>
               <a
                 href="tel:5403351059"
                 className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-primary-900 transition-colors"
               >
-                Call (540) 335-1059
+                Call an Expert
               </a>
             </div>
           </div>
@@ -79,20 +72,20 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-neutral-900 mb-4">Why Choose Squeegee Samurai?</h2>
             <p className="text-lg text-neutral-600">Professional service with a commitment to excellence and environmental responsibility</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <Shield className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Fully Insured</h3>
               <p className="text-neutral-600">Licensed and insured for your peace of mind. We protect your property and our team.</p>
             </div>
-            
+
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <Leaf className="w-12 h-12 text-accent-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Eco-Friendly</h3>
               <p className="text-neutral-600">Biodegradable cleaning solutions that are safe for your family, pets, and the environment.</p>
             </div>
-            
+
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <Star className="w-12 h-12 text-gold-500 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">5-Star Service</h3>
@@ -111,7 +104,7 @@ const Home = () => {
               Proud to work alongside these innovative companies
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {partners.map((partner, index) => (
               <div key={index} className="bg-neutral-100 rounded-lg p-8 text-center hover:shadow-lg transition-shadow">
@@ -132,29 +125,32 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="parallax-clouds py-16 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-neutral-900 mb-6">FAQs</h2>
+      <section className="parallax-clouds py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Translucent card container */}
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-neutral-200 p-8 sm:p-10">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-6">FAQs</h2>
 
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-2">How often should I clean my windows?</h3>
-            <p className="text-neutral-700">
-              Most homes benefit from window cleaning twice a year. Storefronts and high-traffic businesses may prefer monthly or quarterly service.
-            </p>
-          </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">How often should I clean my windows?</h3>
+              <p className="text-neutral-700">
+                Most homes benefit from window cleaning twice a year. Storefronts and high-traffic businesses may prefer monthly or quarterly service.
+              </p>
+            </div>
 
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-2">Do you offer window cleaning in Loudon County?</h3>
-            <p className="text-neutral-700">
-              Yes. We serve homes and businesses throughout the county including Leesburg, Ashburn, and Sterling and more.
-            </p>
-          </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Do you offer window cleaning in Loudon County?</h3>
+              <p className="text-neutral-700">
+                Yes. We serve homes and businesses throughout the county including Leesburg, Ashburn, and Sterling and more.
+              </p>
+            </div>
 
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-2">Are you insured?</h3>
-            <p className="text-neutral-700">
-              Absolutely. We’re fully insured for your peace of mind.
-            </p>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Are you insured?</h3>
+              <p className="text-neutral-700">
+                Absolutely. We’re fully insured for your peace of mind.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -166,7 +162,7 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-neutral-900 mb-4">Our Services</h2>
             <p className="text-lg text-neutral-600">Comprehensive window cleaning solutions for every need</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
@@ -183,7 +179,7 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
                 <Building className="w-12 h-12 text-primary-600 mb-4" />
@@ -200,7 +196,7 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
                 <Building className="w-12 h-12 text-primary-600 mb-4" />
@@ -227,26 +223,26 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-neutral-900 mb-4">Serving Loudoun County</h2>
             <p className="text-lg text-neutral-600">Professional window cleaning throughout Northern Virginia</p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          {['Ashburn', 'Leesburg', 'Sterling', 'Herndon', 'Reston', 'Purcellville', 'Middleburg', 'Hamilton'].map((city) => {
-            
-            const slug = city.toLowerCase() + "-window-cleaning"; // goes to.... "leesburg-window-cleaning"
+            {['Ashburn', 'Leesburg', 'Sterling', 'Herndon', 'Reston', 'Purcellville', 'Middleburg', 'Hamilton'].map((city) => {
 
-            return (
-              <div key={city} className="bg-white p-4 rounded-lg shadow">
-                <Link
-                  to={`/${slug}`}
-                  className="font-semibold text-neutral-800 hover:text-primary-600"
-                >
-                  {city}
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+              const slug = city.toLowerCase() + "-window-cleaning"; // goes to.... "leesburg-window-cleaning"
 
-          
+              return (
+                <div key={city} className="bg-white p-4 rounded-lg shadow">
+                  <Link
+                    to={`/${slug}`}
+                    className="font-semibold text-neutral-800 hover:text-primary-600"
+                  >
+                    {city}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+
           <div className="text-center mt-8">
             <Link to="/service-areas" className="text-primary-600 font-semibold hover:text-primary-800">
               View All Service Areas →
