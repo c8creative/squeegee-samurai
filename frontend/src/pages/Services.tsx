@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
+import "./Home.css";
 
 const CORE_SERVICES = [
   {
@@ -89,7 +90,7 @@ const Services = () => {
       </section>
 
       {/* Core Services */}
-      <section className="bg-washi-50 py-20 lg:py-24">
+      <section className="jp-cloud-parallax bg-washi-50 py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">

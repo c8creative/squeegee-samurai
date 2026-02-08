@@ -186,30 +186,40 @@ const FreeEstimate = () => {
 
       <div className="section-container py-12 lg:py-16">
         <div className="mx-auto max-w-4xl">
-          {/* Service Type Toggle */}
-          <div className="mb-10 flex justify-center gap-3">
-            <button
-              onClick={() => setServiceType('residential')}
-              className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors ${
-                serviceType === 'residential'
-                  ? 'bg-sumi-800 text-washi-50'
-                  : 'border border-sumi-200 bg-white text-sumi-600 hover:border-sumi-400'
-              }`}
-            >
-              <Home className="h-4 w-4" />
-              Residential
-            </button>
-            <button
-              onClick={() => setServiceType('commercial')}
-              className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors ${
-                serviceType === 'commercial'
-                  ? 'bg-sumi-800 text-washi-50'
-                  : 'border border-sumi-200 bg-white text-sumi-600 hover:border-sumi-400'
-              }`}
-            >
-              <Building className="h-4 w-4" />
-              Commercial
-            </button>
+          {/* Service Type Toggle Switch */}
+          <div className="mb-10 flex justify-center">
+            <div className="relative inline-flex rounded-full border border-sumi-200 bg-sumi-50 p-1">
+              {/* Sliding background indicator */}
+              <div
+                className="absolute top-1 bottom-1 rounded-full bg-sumi-800 transition-all duration-300 ease-in-out"
+                style={{
+                  left: serviceType === 'residential' ? '4px' : '50%',
+                  width: 'calc(50% - 4px)',
+                }}
+              />
+              <button
+                onClick={() => setServiceType('residential')}
+                className={`relative z-10 flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                  serviceType === 'residential'
+                    ? 'text-washi-50'
+                    : 'text-sumi-500 hover:text-sumi-700'
+                }`}
+              >
+                <Home className="h-4 w-4" />
+                Residential
+              </button>
+              <button
+                onClick={() => setServiceType('commercial')}
+                className={`relative z-10 flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                  serviceType === 'commercial'
+                    ? 'text-washi-50'
+                    : 'text-sumi-500 hover:text-sumi-700'
+                }`}
+              >
+                <Building className="h-4 w-4" />
+                Commercial
+              </button>
+            </div>
           </div>
 
           {serviceType === 'commercial' ? (

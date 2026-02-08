@@ -49,6 +49,32 @@
   background: transparent; /* Ensure content doesn't inherit background */
 }
 
+/* ── Japanese Cloud Tiled Parallax ── */
+.jp-cloud-parallax {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.jp-cloud-parallax::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/japanese-cloud.svg");
+  background-size: 280px auto;
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: fixed;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.jp-cloud-parallax > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .parallax-clouds::before,

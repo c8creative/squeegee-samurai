@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram } from "lucide-react";
 
 const PHONE_DISPLAY = "(540) 335-1059";
 const PHONE_TEL = "5403351059";
@@ -30,9 +30,9 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:max-w-xs">
             <img
-              src="/images/squeegee-samurai-logo.svg"
+              src="/images/SSamurai_Logo.png"
               alt="Squeegee Samurai"
-              className="h-16 w-auto brightness-0 invert"
+              className="h-16 w-auto"
             />
             <p className="mt-5 text-sm leading-relaxed text-sumi-300">
               Professional window cleaning with the precision and dedication of the samurai.
@@ -106,6 +106,15 @@ export default function Footer() {
                   Loudoun County, Virginia
                 </li>
               </ul>
+              <a
+                href="https://instagram.com/squeegeesamurai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-sm border border-sumi-600 px-5 py-2.5 text-sm font-medium text-sumi-300 transition-colors hover:border-washi-200 hover:text-washi-100"
+              >
+                <Instagram className="h-4 w-4" aria-hidden />
+                Follow us on Instagram!
+              </a>
             </div>
           </div>
         </div>

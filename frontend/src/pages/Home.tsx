@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import "./Home.css";
 import {
   Shield,
   Leaf,
@@ -163,7 +164,7 @@ const Home = () => {
       </section>
 
       {/* ── Services ── */}
-      <section className="bg-washi-100 py-20 lg:py-24">
+      <section className="jp-cloud-parallax bg-washi-50 py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">
@@ -265,7 +266,7 @@ const Home = () => {
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">
               Coverage
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold text-sumi-900 sm:text-4xl">
+            <h2 className="mt-3 font-display text-3xl font-bold text-black sm:text-4xl">
               Serving Loudoun County
             </h2>
             <p className="mt-4 text-base text-sumi-500">

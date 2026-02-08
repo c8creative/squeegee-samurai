@@ -41,19 +41,72 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-sm bg-aka-600 px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors hover:bg-aka-700;
+    @apply inline-flex items-center justify-center bg-aka-600 px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors hover:bg-aka-700;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .btn-dark {
-    @apply inline-flex items-center justify-center rounded-sm bg-sumi-800 px-6 py-3 text-sm font-medium tracking-wide text-washi-50 transition-colors hover:bg-sumi-900;
+    @apply inline-flex items-center justify-center bg-sumi-800 px-6 py-3 text-sm font-medium tracking-wide text-washi-50 transition-colors hover:bg-sumi-900;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-sm border border-sumi-300 bg-transparent px-6 py-3 text-sm font-medium tracking-wide text-sumi-800 transition-colors hover:bg-sumi-800 hover:text-washi-50 hover:border-sumi-800;
+    @apply inline-flex items-center justify-center bg-transparent px-6 py-3 text-sm font-medium tracking-wide text-sumi-800 transition-colors hover:bg-sumi-800 hover:text-washi-50;
+    border-radius: 15px;
+    border: 1px solid theme('colors.sumi.300');
   }
 
   /* Subtle geometric line divider inspired by Japanese design */
   .divider-line {
     @apply mx-auto h-px w-16 bg-sumi-200;
+  }
+}
+
+/* Global button styling: 15px radius + subtle border */
+@layer base {
+  button:not([class*="list-none"]):not(details summary),
+  a[class*="rounded-sm"]:not([role="menuitem"]):not(nav a),
+  a[class*="rounded-md"]:not([role="menuitem"]):not(nav a),
+  a[class*="rounded-lg"]:not([role="menuitem"]):not(nav a),
+  a[class*="rounded-full"]:not([role="menuitem"]):not(nav a) {
+    border-radius: 15px !important;
+  }
+
+  a[class*="rounded-sm"]:not([role="menuitem"]):not(nav a),
+  a[class*="rounded-md"]:not([role="menuitem"]):not(nav a),
+  a[class*="rounded-lg"]:not([role="menuitem"]):not(nav a),
+  a[class*="rounded-full"]:not([role="menuitem"]):not(nav a) {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  /* Light border for buttons on dark backgrounds */
+  .bg-sumi-900 a[class*="rounded"],
+  .bg-sumi-800 a[class*="rounded"],
+  section[class*="bg-sumi"] a[class*="rounded"] {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Global input field styling: 10px radius */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="url"],
+  input[type="file"],
+  textarea,
+  select {
+    border-radius: 10px !important;
+  }
+
+  /* Global bordered card/container styling: 10px radius */
+  div[class*="border"][class*="bg-white"],
+  div[class*="border"][class*="bg-washi"],
+  form[class*="border"][class*="bg-white"],
+  form[class*="border"][class*="bg-washi"] {
+    border-radius: 10px !important;
   }
 }
