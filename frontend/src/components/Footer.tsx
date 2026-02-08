@@ -1,108 +1,127 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const PHONE_DISPLAY = "(540) 335-1059";
 const PHONE_TEL = "5403351059";
 const EMAIL = "james@squeegee-samurai.com";
 
+const footerLinks = {
+  services: [
+    { label: "Residential", to: "/services/residential" },
+    { label: "Commercial", to: "/services/commercial" },
+    { label: "All Services", to: "/services" },
+    { label: "Free Estimate", to: "/free-estimate" },
+  ],
+  company: [
+    { label: "About", to: "/about" },
+    { label: "Service Areas", to: "/service-areas" },
+    { label: "FAQ", to: "/faq" },
+    { label: "Contact", to: "/contact" },
+    { label: "Now Hiring", to: "/now-hiring" },
+  ],
+};
+
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 text-white" role="contentinfo">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Company Info */}
-          <div className="md:col-span-2">
-            <h3 className="mb-4 text-2xl font-bold">Squeegee Samurai</h3>
-            <p className="mb-4 text-neutral-300">
-              Professional window cleaning services for homes and businesses
-              throughout Loudoun County, Virginia. Bringing the precision and
-              dedication of the samurai to modern window cleaning.
+    <footer className="border-t border-sumi-100 bg-sumi-900" role="contentinfo">
+      <div className="section-container py-16">
+        <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
+          {/* Brand column */}
+          <div className="lg:max-w-xs">
+            <h3 className="font-display text-xl font-bold text-washi-50">
+              Squeegee Samurai
+            </h3>
+            <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-sumi-400">
+              Clarity through Pane
             </p>
+            <p className="mt-5 text-sm leading-relaxed text-sumi-300">
+              Professional window cleaning with the precision and dedication of the samurai.
+              Serving homes and businesses throughout Loudoun County, Virginia.
+            </p>
+          </div>
 
-            <div className="flex space-x-4">
-              <a
-                href="https://facebook.com/squeegeesamurai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-300 hover:text-white"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-6 w-6" aria-hidden />
-              </a>
-              <a
-                href="https://instagram.com/squeegeesamurai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-300 hover:text-white"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-6 w-6" aria-hidden />
-              </a>
+          {/* Link columns */}
+          <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3">
+            <div>
+              <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-sumi-400">
+                Services
+              </h4>
+              <ul className="mt-4 space-y-2.5">
+                {footerLinks.services.map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="text-sm text-sumi-300 transition-colors hover:text-washi-100"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="mb-4 text-lg font-semibold">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-neutral-300 hover:text-white">Home</Link></li>
-              <li><Link to="/about" className="text-neutral-300 hover:text-white">About</Link></li>
-              <li><Link to="/services" className="text-neutral-300 hover:text-white">Services</Link></li>
-              <li><Link to="/services/residential" className="text-neutral-300 hover:text-white">Residential Services</Link></li>
-              <li><Link to="/services/commercial" className="text-neutral-300 hover:text-white">Commercial Services</Link></li>
-              <li><Link to="/service-areas" className="text-neutral-300 hover:text-white">Service Areas</Link></li>
-              <li><Link to="/holiday-lighting" className="text-neutral-300 hover:text-white">Holiday Lighting</Link></li>
-              <li><Link to="/faq" className="text-neutral-300 hover:text-white">FAQ</Link></li>
-              <li><Link to="/contact" className="text-neutral-300 hover:text-white">Contact</Link></li>
-              <li><Link to="/now-hiring" className="text-neutral-300 hover:text-white">Now Hiring</Link></li>
-              <li><Link to="/free-estimate" className="text-neutral-300 hover:text-white">Free Estimate</Link></li>
-            </ul>
-          </div>
+            <div>
+              <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-sumi-400">
+                Company
+              </h4>
+              <ul className="mt-4 space-y-2.5">
+                {footerLinks.company.map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="text-sm text-sumi-300 transition-colors hover:text-washi-100"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="mb-4 text-lg font-semibold">Contact Info</h4>
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <Phone className="mr-3 h-5 w-5 text-slate-400" aria-hidden />
-                <a
-                  href={`tel:${PHONE_TEL}`}
-                  className="text-neutral-300 hover:text-white"
-                >
-                  {PHONE_DISPLAY}
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Mail className="mr-3 h-5 w-5 text-slate-400" aria-hidden />
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="text-neutral-300 hover:text-white"
-                >
-                  {EMAIL}
-                </a>
-              </div>
-              <div className="flex items-start">
-                <MapPin className="mr-3 mt-1 h-5 w-5 text-slate-400" aria-hidden />
-                <span className="text-neutral-300">
-                  Serving Loudoun County, Virginia
-                </span>
-              </div>
+            <div>
+              <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-sumi-400">
+                Contact
+              </h4>
+              <ul className="mt-4 space-y-3">
+                <li>
+                  <a
+                    href={`tel:${PHONE_TEL}`}
+                    className="flex items-center gap-2.5 text-sm text-sumi-300 transition-colors hover:text-washi-100"
+                  >
+                    <Phone className="h-3.5 w-3.5 shrink-0 text-sumi-500" aria-hidden />
+                    {PHONE_DISPLAY}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="flex items-center gap-2.5 text-sm text-sumi-300 transition-colors hover:text-washi-100"
+                  >
+                    <Mail className="h-3.5 w-3.5 shrink-0 text-sumi-500" aria-hidden />
+                    {EMAIL}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5 text-sm text-sumi-300">
+                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-sumi-500" aria-hidden />
+                  Loudoun County, Virginia
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-8 md:flex-row">
-          <p className="text-sm text-neutral-400">
-            © {new Date().getFullYear()} Squeegee Samurai. All rights reserved.
+        {/* Bottom bar */}
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-sumi-800 pt-8 sm:flex-row">
+          <p className="text-xs text-sumi-500">
+            &copy; {new Date().getFullYear()} Squeegee Samurai. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <Link to="/privacy" className="text-sm text-neutral-400 hover:text-white">
-              Privacy Policy
+          <div className="flex gap-6">
+            <Link to="/privacy" className="text-xs text-sumi-500 transition-colors hover:text-sumi-300">
+              Privacy
             </Link>
-            <Link to="/terms" className="text-sm text-neutral-400 hover:text-white">
-              Terms of Service
+            <Link to="/terms" className="text-xs text-sumi-500 transition-colors hover:text-sumi-300">
+              Terms
             </Link>
           </div>
         </div>

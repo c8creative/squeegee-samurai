@@ -1,108 +1,82 @@
-import React from 'react';
-import { MapPin, CheckCircle, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { MapPin, CheckCircle, Phone, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const CITIES = [
+  { name: "Ashburn", description: "Serving all of Ashburn including Broadlands, Brambleton, and surrounding neighborhoods", zips: ["20147", "20148", "20149"] },
+  { name: "Leesburg", description: "Complete coverage of Leesburg, including historic downtown and all residential areas", zips: ["20175", "20176"] },
+  { name: "Sterling", description: "Professional window cleaning throughout Sterling and Potomac Falls", zips: ["20164", "20165", "20166"] },
+  { name: "Herndon", description: "Serving Herndon and the surrounding Reston area", zips: ["20170", "20171"] },
+  { name: "Reston", description: "Full service coverage of Reston, including Lake Anne and Town Center", zips: ["20190", "20191", "20194"] },
+  { name: "Purcellville", description: "Window cleaning services for Purcellville and western Loudoun County", zips: ["20132"] },
+  { name: "Middleburg", description: "Serving Middleburg and the surrounding horse country", zips: ["20117", "20118"] },
+  { name: "Hamilton", description: "Professional services for Hamilton and rural Loudoun County areas", zips: ["20158"] },
+];
 
 const ServiceAreas = () => {
-  const cities = [
-    {
-      name: 'Ashburn',
-      description: 'Serving all of Ashburn including Broadlands, Brambleton, and surrounding neighborhoods',
-      zipCodes: ['20147', '20148', '20149']
-    },
-    {
-      name: 'Leesburg',
-      description: 'Complete coverage of Leesburg, including historic downtown and all residential areas',
-      zipCodes: ['20175', '20176']
-    },
-    {
-      name: 'Sterling',
-      description: 'Professional window cleaning throughout Sterling and Potomac Falls',
-      zipCodes: ['20164', '20165', '20166']
-    },
-    {
-      name: 'Herndon',
-      description: 'Serving Herndon and the surrounding Reston area',
-      zipCodes: ['20170', '20171']
-    },
-    {
-      name: 'Reston',
-      description: 'Full service coverage of Reston, including Lake Anne and Town Center',
-      zipCodes: ['20190', '20191', '20194']
-    },
-    {
-      name: 'Purcellville',
-      description: 'Window cleaning services for Purcellville and western Loudoun County',
-      zipCodes: ['20132']
-    },
-    {
-      name: 'Middleburg',
-      description: 'Serving Middleburg and the surrounding horse country',
-      zipCodes: ['20117', '20118']
-    },
-    {
-      name: 'Hamilton',
-      description: 'Professional services for Hamilton and rural Loudoun County areas',
-      zipCodes: ['20158']
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gray-900 text-white py-20">
-      <div
-          className="absolute inset-0 pointer-events-none opacity-30 z-0"
-          style={{
-            backgroundImage:
-              'repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.9) 0deg 1.2deg, transparent 1.2deg 5deg)',
-            WebkitMaskImage:
-              'radial-gradient(circle at center, transparent 0 32%, black 45%)',
-            maskImage:
-              'radial-gradient(circle at center, transparent 0 32%, black 45%)'
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <MapPin className="w-16 h-16 mx-auto mb-6 text-primary-200" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Service Areas</h1>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Professional window cleaning services throughout Loudoun County, Virginia
-            </p>
-          </div>
+    <div>
+      {/* Hero */}
+      <section className="bg-sumi-900 py-20 lg:py-24">
+        <div className="section-container text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">
+            Coverage
+          </p>
+          <h1 className="mt-4 font-display text-4xl font-bold text-washi-50 sm:text-5xl">
+            Service Areas
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-sumi-300">
+            Professional window cleaning services throughout Loudoun County, Virginia.
+          </p>
         </div>
       </section>
 
-      {/* Service Coverage */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">Proudly Serving Loudoun County</h2>
-            <p className="text-lg text-neutral-600">
-              We provide professional window cleaning services to residential and commercial properties throughout Northern Virginia
+      {/* Cities */}
+      <section className="bg-washi-50 py-20 lg:py-24">
+        <div className="section-container">
+          <div className="max-w-xl">
+            <h2 className="font-display text-3xl font-bold text-sumi-900">
+              Proudly Serving Loudoun County
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-sumi-500">
+              We provide professional window cleaning to residential and commercial
+              properties throughout Northern Virginia.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cities.map((city) => (
-              <div key={city.name} className="bg-white rounded-lg shadow-lg border border-neutral-200 p-6">
-                <div className="flex items-center mb-4">
-                  <MapPin className="w-6 h-6 text-primary-600 mr-3" />
-                  <h3 className="text-xl font-semibold text-neutral-900">{city.name}</h3>
+
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {CITIES.map((city) => (
+              <div
+                key={city.name}
+                className="rounded border border-sumi-100 bg-washi-50 p-6 transition-shadow hover:shadow-sm"
+              >
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-indigo-600" />
+                  <h3 className="font-display text-base font-semibold text-sumi-900">
+                    {city.name}
+                  </h3>
                 </div>
-                <p className="text-neutral-600 mb-4">{city.description}</p>
-                <div className="mb-4">
-                  <h4 className="font-semibold text-neutral-900 mb-2">ZIP Codes Served:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {city.zipCodes.map((zip) => (
-                      <span key={zip} className="bg-primary-100 text-primary-800 px-2 py-1 rounded text-sm">
+                <p className="mt-2 text-sm leading-relaxed text-sumi-500">
+                  {city.description}
+                </p>
+                <div className="mt-4">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-sumi-400">
+                    ZIP Codes
+                  </span>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {city.zips.map((zip) => (
+                      <span
+                        key={zip}
+                        className="rounded-sm bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700"
+                      >
                         {zip}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center text-accent-600">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  <span className="text-sm font-medium">Full Service Available</span>
+                <div className="mt-4 flex items-center gap-1.5 text-xs font-medium text-indigo-600">
+                  <CheckCircle className="h-3 w-3" />
+                  Full Service Available
                 </div>
               </div>
             ))}
@@ -110,139 +84,92 @@ const ServiceAreas = () => {
         </div>
       </section>
 
-      {/* Service Details */}
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">What We Offer in Every Service Area</h2>
-            <p className="text-lg text-neutral-600">
-              Consistent, high-quality service no matter where you're located in Loudoun County
+      {/* What We Offer */}
+      <section className="border-t border-sumi-100 bg-washi-100 py-20 lg:py-24">
+        <div className="section-container">
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-bold text-sumi-900">
+              What We Offer in Every Area
+            </h2>
+            <p className="mt-4 text-base text-sumi-500">
+              Consistent, high-quality service no matter where you are in Loudoun County.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Residential Services</h3>
-              <ul className="space-y-2 text-neutral-600">
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Single-family homes
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Townhouses & condos
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Interior & exterior cleaning
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Screen cleaning
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Commercial Services</h3>
-              <ul className="space-y-2 text-neutral-600">
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Office buildings
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Retail stores
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Medical facilities
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Regular maintenance
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Specialized Services</h3>
-              <ul className="space-y-2 text-neutral-600">
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Restaurant cleaning
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Post-construction cleanup
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Solar panel cleaning
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                  Emergency service
-                </li>
-              </ul>
-            </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Residential",
+                items: ["Single-family homes", "Townhouses & condos", "Interior & exterior cleaning", "Screen cleaning"],
+              },
+              {
+                title: "Commercial",
+                items: ["Office buildings", "Retail stores", "Medical facilities", "Regular maintenance"],
+              },
+              {
+                title: "Specialized",
+                items: ["Restaurant cleaning", "Post-construction cleanup", "Solar panel cleaning", "Emergency service"],
+              },
+            ].map((group) => (
+              <div key={group.title} className="rounded border border-sumi-100 bg-washi-50 p-6">
+                <h3 className="font-display text-base font-semibold text-sumi-800">
+                  {group.title}
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-sumi-600">
+                      <CheckCircle className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Travel Information */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary-50 rounded-lg p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-neutral-900 mb-4">Service Area Information</h2>
-              <p className="text-lg text-neutral-600">
-                Important details about our service coverage and scheduling
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Service Info */}
+      <section className="bg-washi-50 py-20 lg:py-24">
+        <div className="section-container">
+          <div className="mx-auto max-w-4xl rounded border border-sumi-100 bg-washi-100 p-8">
+            <h2 className="font-display text-2xl font-bold text-sumi-900">
+              Service Area Information
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
               <div>
-                <h3 className="text-xl font-semibold mb-4">Service Radius</h3>
-                <p className="text-neutral-600 mb-4">
-                  We proudly serve all of Loudoun County, Virginia, with our primary focus on the eastern and central areas. 
-                  Our service area extends from Ashburn and Sterling in the east to Purcellville and Hamilton in the west.
+                <h3 className="font-display text-base font-semibold text-sumi-800">
+                  Service Radius
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-sumi-500">
+                  We serve all of Loudoun County, Virginia, with our primary focus on
+                  the eastern and central areas -- from Ashburn and Sterling in the east
+                  to Purcellville and Hamilton in the west.
                 </p>
-                <ul className="space-y-2 text-neutral-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                    No travel charges within Loudoun County
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                    Same-day service available in most areas
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                    Emergency service throughout our coverage area
-                  </li>
+                <ul className="mt-4 space-y-2">
+                  {["No travel charges within Loudoun County", "Same-day service available in most areas", "Emergency service throughout coverage area"].map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-sumi-600">
+                      <CheckCircle className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                      {f}
+                    </li>
+                  ))}
                 </ul>
               </div>
-              
               <div>
-                <h3 className="text-xl font-semibold mb-4">Scheduling & Availability</h3>
-                <p className="text-neutral-600 mb-4">
-                  We offer flexible scheduling to accommodate your needs, with service available throughout the week 
-                  and on weekends when necessary.
+                <h3 className="font-display text-base font-semibold text-sumi-800">
+                  Scheduling & Availability
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-sumi-500">
+                  We offer flexible scheduling to accommodate your needs, with service
+                  available throughout the week and on weekends when necessary.
                 </p>
-                <ul className="space-y-2 text-neutral-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                    Monday - Saturday service available
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                    Evening appointments by request
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-accent-500 mr-2" />
-                    Regular maintenance scheduling
-                  </li>
+                <ul className="mt-4 space-y-2">
+                  {["Monday - Saturday service available", "Evening appointments by request", "Regular maintenance scheduling"].map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-sumi-600">
+                      <CheckCircle className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                      {f}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -250,26 +177,20 @@ const ServiceAreas = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-accent-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Schedule Service?</h2>
-          <p className="text-xl mb-8">
-            Contact us today to schedule professional window cleaning in your area
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/free-estimate"
-              className="bg-white text-accent-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-neutral-100 transition-colors"
-            >
+      {/* CTA */}
+      <section className="bg-sumi-900 py-16">
+        <div className="section-container text-center">
+          <h2 className="font-display text-2xl font-bold text-washi-50 sm:text-3xl">
+            Ready to schedule service?
+          </h2>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <Link to="/free-estimate" className="inline-flex items-center justify-center gap-2 rounded-sm bg-washi-50 px-7 py-3 text-sm font-medium tracking-wide text-sumi-900 transition-colors hover:bg-washi-200">
               Get Free Estimate
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
             </Link>
-            <a
-              href="tel:5403351059"
-              className="flex items-center justify-center bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-accent-600 transition-colors"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Call (540) 335-1059
+            <a href="tel:5403351059" className="inline-flex items-center justify-center gap-2 rounded-sm border border-sumi-600 px-7 py-3 text-sm font-medium tracking-wide text-washi-200 transition-colors hover:border-sumi-400 hover:text-washi-50">
+              <Phone className="h-3.5 w-3.5" aria-hidden />
+              (540) 335-1059
             </a>
           </div>
         </div>

@@ -1,3 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: theme('colors.sumi.100');
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: theme('colors.sumi.800');
+    background-color: theme('colors.washi.50');
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', 'Inter', system-ui, sans-serif;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: theme('colors.indigo.100');
+    color: theme('colors.indigo.900');
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply mx-auto max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-sm bg-sumi-800 px-6 py-3 text-sm font-medium tracking-wide text-washi-50 transition-colors hover:bg-sumi-900;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-sm border border-sumi-800 bg-transparent px-6 py-3 text-sm font-medium tracking-wide text-sumi-800 transition-colors hover:bg-sumi-800 hover:text-washi-50;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-sm bg-aka-600 px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors hover:bg-aka-700;
+  }
+
+  /* Subtle geometric line divider inspired by Japanese design */
+  .divider-line {
+    @apply mx-auto h-px w-16 bg-sumi-200;
+  }
+}

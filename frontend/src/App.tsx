@@ -34,7 +34,7 @@ import HerndonHome from './pages/HerndonHome';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-washi-50">
         <Header />
         <main>
           <HelmetProvider>

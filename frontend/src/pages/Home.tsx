@@ -1,62 +1,95 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Shield, Leaf, Star, Phone, CheckCircle, Users, Building, Utensils, ExternalLink } from 'lucide-react';
-import logo1 from '../assets/images/squeegeesamurai-logo1.png' //change to new logo 
-import cloud from '../assets/images/akatsuki-cloud-orng.png'
-import './Home.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Shield,
+  Leaf,
+  Star,
+  Phone,
+  CheckCircle,
+  Users,
+  Building,
+  ArrowRight,
+  Droplets,
+} from "lucide-react";
 
-//atatsuki cloud hex --> #ba2127
+const SERVICES = [
+  {
+    icon: Users,
+    title: "Residential",
+    description:
+      "Interior and exterior window cleaning for homes, townhouses, and condos throughout Loudoun County.",
+    features: ["Interior & exterior cleaning", "Screen cleaning", "Sill & frame cleaning"],
+    to: "/services/residential",
+  },
+  {
+    icon: Building,
+    title: "Commercial",
+    description:
+      "Scheduled maintenance for offices, retail storefronts, and commercial buildings.",
+    features: ["Scheduled maintenance", "High-traffic area focus", "Flexible scheduling"],
+    to: "/services/commercial",
+  },
+  {
+    icon: Droplets,
+    title: "Additional Services",
+    description:
+      "Pressure washing, gutter cleaning, and specialized exterior cleaning services.",
+    features: ["Pressure washing", "Gutter cleaning", "Solar panel cleaning"],
+    to: "/services",
+  },
+];
 
+const AREAS = [
+  "Ashburn",
+  "Leesburg",
+  "Sterling",
+  "Herndon",
+  "Reston",
+  "Purcellville",
+  "Middleburg",
+  "Hamilton",
+];
 
 const Home = () => {
-  const partners = [
-    {
-      name: 'Play The Par Social Club',
-      url: 'https://playtheparsocialclub.com/',
-      description: 'Entertainment & Media Partner'
-    },
-    {
-      name: 'Understood Tech',
-      url: 'https://understoodtech.com',
-      description: 'Technology Solutions Partner'
-    }
-  ];
-
   return (
     <div>
-      {/* Hero Section with Parallax Background */}
-      <section
-        className="relative overflow-hidden text-white min-h-[600px] flex items-center"
-        style={{
-          backgroundImage: "url('/images/leesburg-storefront.png')",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
-        }}
-      >
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Crystal Clear Window Cleaning<br />
-              <span className="text-accent-400">in Loudoun County, VA</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white">
-              Professional and eco-friendly window cleaning for homes and businesses
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden bg-sumi-900">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/hero-storefront.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-sumi-900/60" />
+        </div>
+
+        {/* Geometric accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-washi-200/20" />
+
+        <div className="section-container relative z-10 flex min-h-[620px] items-center py-24">
+          <div className="max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-washi-200/80">
+              Loudoun County, Virginia
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/free-estimate"
-                className="bg-primary-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-600 transition-colors"
-              >
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.1] text-washi-50 sm:text-5xl lg:text-6xl">
+              Precision window
+              <br />
+              cleaning, refined.
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-washi-200/90 sm:text-lg">
+              Professional and eco-friendly window care for homes and businesses.
+              The samurai approach to every pane.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Link to="/free-estimate" className="btn-primary gap-2 px-7 py-3.5 text-sm">
                 Get Free Estimate
+                <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
               <a
                 href="tel:5403351059"
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-primary-900 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-sm border border-washi-200/30 px-7 py-3.5 text-sm font-medium tracking-wide text-washi-100 transition-colors hover:border-washi-100 hover:bg-washi-50/10"
               >
+                <Phone className="h-4 w-4" aria-hidden />
                 Call an Expert
               </a>
             </div>
@@ -64,211 +97,206 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            {/*add the logo here */}
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">Why Choose Squeegee Samurai?</h2>
-            <p className="text-lg text-neutral-600">Professional service with a commitment to excellence and environmental responsibility</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <Shield className="w-12 h-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Fully Insured</h3>
-              <p className="text-neutral-600">Licensed and insured for your peace of mind. We protect your property and our team.</p>
-            </div>
-
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <Leaf className="w-12 h-12 text-accent-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Eco-Friendly</h3>
-              <p className="text-neutral-600">Biodegradable cleaning solutions that are safe for your family, pets, and the environment.</p>
-            </div>
-
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <Star className="w-12 h-12 text-gold-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3">5-Star Service</h3>
-              <p className="text-neutral-600">Consistently rated 5 stars by our customers. Quality work and exceptional customer service.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">Our Partners</h2>
-            <p className="text-lg text-neutral-600">
-              Proud to work alongside these innovative companies
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {partners.map((partner, index) => (
-              <div key={index} className="bg-neutral-100 rounded-lg p-8 text-center hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold text-neutral-900 mb-2">{partner.name}</h3>
-                <p className="text-neutral-600 mb-4">{partner.description}</p>
-                <a
-                  href={partner.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary-600 hover:text-primary-800 font-medium"
-                >
-                  Visit Website
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </a>
+      {/* ── Trust Badges ── */}
+      <section className="border-b border-sumi-100 bg-washi-50">
+        <div className="section-container py-14">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[
+              {
+                icon: Shield,
+                title: "Fully Insured",
+                text: "Licensed and insured for your peace of mind. We protect your property and our team.",
+              },
+              {
+                icon: Leaf,
+                title: "Eco-Friendly",
+                text: "Biodegradable cleaning solutions safe for your family, pets, and the environment.",
+              },
+              {
+                icon: Star,
+                title: "5-Star Rated",
+                text: "Consistently rated 5 stars. Quality work and exceptional customer service.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-sumi-100 bg-washi-100">
+                  <item.icon className="h-5 w-5 text-sumi-600" />
+                </div>
+                <div>
+                  <h3 className="font-display text-sm font-semibold text-sumi-800">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-sumi-500">
+                    {item.text}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="parallax-clouds py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Translucent card container */}
-          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-neutral-200 p-8 sm:p-10">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-6">FAQs</h2>
+      {/* ── Services ── */}
+      <section className="bg-washi-100 py-20 lg:py-24">
+        <div className="section-container">
+          <div className="max-w-xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">
+              What We Do
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-sumi-900 sm:text-4xl">
+              Our Services
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-sumi-500">
+              Comprehensive window cleaning solutions for every need, delivered with
+              discipline and care.
+            </p>
+          </div>
 
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2">How often should I clean my windows?</h3>
-              <p className="text-neutral-700">
-                Most homes benefit from window cleaning twice a year. Storefronts and high-traffic businesses may prefer monthly or quarterly service.
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2">Do you offer window cleaning in Loudon County?</h3>
-              <p className="text-neutral-700">
-                Yes. We serve homes and businesses throughout the county including Leesburg, Ashburn, and Sterling and more.
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2">Are you insured?</h3>
-              <p className="text-neutral-700">
-                Absolutely. We’re fully insured for your peace of mind.
-              </p>
-            </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {SERVICES.map((service) => (
+              <div
+                key={service.title}
+                className="group flex flex-col rounded border border-sumi-100 bg-washi-50 p-7 transition-shadow hover:shadow-md"
+              >
+                <service.icon className="h-6 w-6 text-indigo-600" />
+                <h3 className="mt-5 font-display text-xl font-semibold text-sumi-900">
+                  {service.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-sumi-500">
+                  {service.description}
+                </p>
+                <ul className="mt-5 space-y-2">
+                  {service.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-sumi-600">
+                      <CheckCircle className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to={service.to}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-sumi-800 transition-colors group-hover:text-indigo-600"
+                >
+                  Learn More
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">Our Services</h2>
-            <p className="text-lg text-neutral-600">Comprehensive window cleaning solutions for every need</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="p-6">
-                <Users className="w-12 h-12 text-primary-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Residential</h3>
-                <p className="text-neutral-600 mb-4">Professional window cleaning for homes, townhouses, and condos.</p>
-                <ul className="text-sm text-neutral-600 space-y-2 mb-6">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Interior & exterior cleaning</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Screen cleaning</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Sill & frame cleaning</li>
-                </ul>
-                <Link to="/services/residential" className="text-primary-600 font-semibold hover:text-primary-800">
-                  Learn More →
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="p-6">
-                <Building className="w-12 h-12 text-primary-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Commercial</h3>
-                <p className="text-neutral-600 mb-4">Regular maintenance for offices, retail stores, and commercial buildings.</p>
-                <ul className="text-sm text-neutral-600 space-y-2 mb-6">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Scheduled maintenance</li>
-
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />High-traffic area focus</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Flexible scheduling</li>
-                </ul>
-                <Link to="/services/commercial" className="text-primary-600 font-semibold hover:text-primary-800">
-                  Learn More →
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="p-6">
-                <Building className="w-12 h-12 text-primary-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Additional Services</h3>
-                <p className="text-neutral-600 mb-4">Pressure washing, gutter cleaning, and specialized cleaning services.</p>
-                <ul className="text-sm text-neutral-600 space-y-2 mb-6">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Pressure washing</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Gutter cleaning</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-500 mr-2" />Solar panel cleaning</li>
-                </ul>
-                <Link to="/services/restaurant" className="text-primary-600 font-semibold hover:text-primary-800">
-                  Learn More →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Areas */}
-      <section className="py-16 bg-primary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">Serving Loudoun County</h2>
-            <p className="text-lg text-neutral-600">Professional window cleaning throughout Northern Virginia</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {['Ashburn', 'Leesburg', 'Sterling', 'Herndon', 'Reston', 'Purcellville', 'Middleburg', 'Hamilton'].map((city) => {
-
-              const slug = city.toLowerCase() + "-window-cleaning"; // goes to.... "leesburg-window-cleaning"
-
-              return (
-                <div key={city} className="bg-white p-4 rounded-lg shadow">
-                  <Link
-                    to={`/${slug}`}
-                    className="font-semibold text-neutral-800 hover:text-primary-600"
-                  >
-                    {city}
-                  </Link>
+      {/* ── FAQ Highlight ── */}
+      <section className="bg-washi-50 py-20 lg:py-24">
+        <div className="section-container">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">
+              Common Questions
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-sumi-900 sm:text-4xl">
+              Frequently Asked
+            </h2>
+            <div className="mt-10 divide-y divide-sumi-100">
+              {[
+                {
+                  q: "How often should I clean my windows?",
+                  a: "Most homes benefit from window cleaning twice a year. Storefronts and high-traffic businesses may prefer monthly or quarterly service.",
+                },
+                {
+                  q: "Do you offer window cleaning in Loudoun County?",
+                  a: "Yes. We serve homes and businesses throughout the county including Leesburg, Ashburn, Sterling, and more.",
+                },
+                {
+                  q: "Are you insured?",
+                  a: "Absolutely. We're fully insured for your peace of mind.",
+                },
+              ].map((item) => (
+                <div key={item.q} className="py-6">
+                  <h3 className="font-display text-base font-semibold text-sumi-800">
+                    {item.q}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-sumi-500">
+                    {item.a}
+                  </p>
                 </div>
+              ))}
+            </div>
+            <Link
+              to="/faq"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-sumi-600 transition-colors hover:text-indigo-600"
+            >
+              View all questions
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Service Areas ── */}
+      <section className="border-t border-sumi-100 bg-washi-100 py-20 lg:py-24">
+        <div className="section-container">
+          <div className="text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sumi-400">
+              Coverage
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-sumi-900 sm:text-4xl">
+              Serving Loudoun County
+            </h2>
+            <p className="mt-4 text-base text-sumi-500">
+              Professional window cleaning throughout Northern Virginia.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {AREAS.map((city) => {
+              const slug = city.toLowerCase() + "-window-cleaning";
+              return (
+                <Link
+                  key={city}
+                  to={`/${slug}`}
+                  className="flex items-center justify-center rounded border border-sumi-100 bg-washi-50 px-4 py-3.5 text-sm font-medium text-sumi-700 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700"
+                >
+                  {city}
+                </Link>
               );
             })}
           </div>
 
-
-          <div className="text-center mt-8">
-            <Link to="/service-areas" className="text-primary-600 font-semibold hover:text-primary-800">
-              View All Service Areas →
+          <div className="mt-8 text-center">
+            <Link
+              to="/service-areas"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-sumi-600 transition-colors hover:text-indigo-600"
+            >
+              View All Service Areas
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-accent-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready for Crystal Clear Windows?</h2>
-          <p className="text-xl mb-8">Get your free estimate today and see the Squeegee Samurai difference!</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      {/* ── CTA ── */}
+      <section className="bg-sumi-900 py-20 lg:py-24">
+        <div className="section-container text-center">
+          <h2 className="font-display text-3xl font-bold text-washi-50 sm:text-4xl">
+            Ready for crystal clear windows?
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-base text-sumi-300">
+            Get your free estimate today and see the Squeegee Samurai difference.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <Link
               to="/free-estimate"
-              className="bg-white text-accent-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-neutral-100 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-washi-50 px-7 py-3.5 text-sm font-medium tracking-wide text-sumi-900 transition-colors hover:bg-washi-200"
             >
               Get Free Estimate
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <a
               href="tel:5403351059"
-              className="flex items-center justify-center bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-accent-600 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-sm border border-sumi-600 px-7 py-3.5 text-sm font-medium tracking-wide text-washi-200 transition-colors hover:border-sumi-400 hover:text-washi-50"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Call (540) 335-1059
+              <Phone className="h-4 w-4" aria-hidden />
+              (540) 335-1059
             </a>
           </div>
         </div>
