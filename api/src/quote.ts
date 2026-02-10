@@ -106,7 +106,9 @@ quoteRouter.post('/quote', async (req: Request, res: Response) => {
   }
 
   try {
-    await sendOwnerNotification(validated.data, result, quoteId);
+    // Note: PDF URL not available in legacy Express handler
+    // This will be replaced by serverless handler with PDF generation
+    await sendOwnerNotification(validated.data, result, quoteId, '');
   } catch (e) {
     console.error('Owner notification failed (quote saved):', e);
   }
