@@ -227,120 +227,120 @@ export default function Header() {
             </div>
           </div>
         </div>
-
-        {/* Mobile overlay */}
-        <div
-          id="mobile-menu"
-          className={cx(
-            "fixed inset-0 z-[60] bg-sumi-900/20 backdrop-blur-sm transition-opacity lg:hidden",
-            mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
-          )}
-          onClick={() => setMobileOpen(false)}
-          aria-hidden={!mobileOpen}
-        />
-
-        {/* Mobile panel */}
-        <div
-          className={cx(
-            "fixed inset-y-0 right-0 z-[70] w-full max-w-sm transform bg-washi-50 shadow-2xl transition-transform lg:hidden",
-            mobileOpen ? "translate-x-0" : "translate-x-full"
-          )}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile navigation"
-        >
-          <div className="flex h-20 items-center justify-between border-b border-sumi-100 px-5">
-            <Link
-              to="/"
-              className="flex items-center"
-              onClick={() => setMobileOpen(false)}
-            >
-              <img
-                src="/images/squeegee-samurai-logo.svg"
-                alt="Squeegee Samurai logo"
-                className="h-12 w-auto"
-              />
-            </Link>
-            <button
-              type="button"
-              aria-label="Close menu"
-              onClick={() => setMobileOpen(false)}
-              className="inline-flex items-center justify-center rounded-sm p-2 text-sumi-600 hover:bg-sumi-50"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          <nav className="overflow-y-auto p-5">
-            <ul className="space-y-1">
-              {NAV.primary.map((item) =>
-                item.children ? (
-                  <li key={item.label}>
-                    <details className="group">
-                      <summary className="flex cursor-pointer list-none items-center justify-between rounded-sm px-3 py-2.5 text-sm font-medium text-sumi-700 hover:bg-sumi-50">
-                        <span>{item.label}</span>
-                        <ChevronDown className="h-4 w-4 text-sumi-400 transition-transform group-open:rotate-180" />
-                      </summary>
-                      <div className="ml-3 mt-1 space-y-0.5 border-l border-sumi-100 pl-3">
-                        <MobileLink to="/services" onClick={() => setMobileOpen(false)}>
-                          All Services
-                        </MobileLink>
-                        {item.children.map((child) => (
-                          <MobileLink
-                            key={child.to}
-                            to={child.to}
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            {child.label}
-                          </MobileLink>
-                        ))}
-                      </div>
-                    </details>
-                  </li>
-                ) : (
-                  <li key={item.label}>
-                    <NavLink
-                      to={item.to}
-                      end={item.to === "/"}
-                      onClick={() => setMobileOpen(false)}
-                      className={({ isActive }) =>
-                        cx(
-                          "block rounded-sm px-3 py-2.5 text-sm font-medium",
-                          isActive
-                            ? "bg-sumi-50 text-sumi-900"
-                            : "text-sumi-600 hover:bg-sumi-50 hover:text-sumi-800"
-                        )
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-                  </li>
-                )
-              )}
-            </ul>
-
-            <div className="my-5 h-px bg-sumi-100" />
-
-            <div className="flex flex-col gap-3">
-              <NavLink
-                to={NAV.cta.to}
-                onClick={() => setMobileOpen(false)}
-                className="btn-primary justify-center gap-2"
-              >
-                {NAV.cta.label}
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-              </NavLink>
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="btn-outline justify-center gap-2"
-              >
-                <Phone className="h-3.5 w-3.5" aria-hidden />
-                {PHONE_DISPLAY}
-              </a>
-            </div>
-          </nav>
-        </div>
       </header>
+
+      {/* Mobile overlay */}
+      <div
+        id="mobile-menu"
+        className={cx(
+          "fixed inset-0 z-[60] bg-black/30 backdrop-blur-md transition-opacity duration-300 lg:hidden",
+          mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden={!mobileOpen}
+      />
+
+      {/* Mobile panel */}
+      <div
+        className={cx(
+          "fixed inset-y-0 right-0 z-[70] w-full max-w-sm transform bg-white shadow-2xl transition-transform duration-300 lg:hidden",
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        )}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <div className="flex h-20 items-center justify-between border-b border-sumi-100 px-5">
+          <Link
+            to="/"
+            className="flex items-center"
+            onClick={() => setMobileOpen(false)}
+          >
+            <img
+              src="/images/squeegee-samurai-logo.svg"
+              alt="Squeegee Samurai logo"
+              className="h-12 w-auto"
+            />
+          </Link>
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMobileOpen(false)}
+            className="inline-flex items-center justify-center rounded-sm p-2 text-sumi-600 hover:bg-sumi-50"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <nav className="overflow-y-auto bg-white p-5">
+          <ul className="space-y-1">
+            {NAV.primary.map((item) =>
+              item.children ? (
+                <li key={item.label}>
+                  <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between rounded-sm px-3 py-2.5 text-sm font-medium text-sumi-700 hover:bg-sumi-50">
+                      <span>{item.label}</span>
+                      <ChevronDown className="h-4 w-4 text-sumi-400 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="ml-3 mt-1 space-y-0.5 border-l border-sumi-100 pl-3">
+                      <MobileLink to="/services" onClick={() => setMobileOpen(false)}>
+                        All Services
+                      </MobileLink>
+                      {item.children.map((child) => (
+                        <MobileLink
+                          key={child.to}
+                          to={child.to}
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {child.label}
+                        </MobileLink>
+                      ))}
+                    </div>
+                  </details>
+                </li>
+              ) : (
+                <li key={item.label}>
+                  <NavLink
+                    to={item.to}
+                    end={item.to === "/"}
+                    onClick={() => setMobileOpen(false)}
+                    className={({ isActive }) =>
+                      cx(
+                        "block rounded-sm px-3 py-2.5 text-sm font-medium",
+                        isActive
+                          ? "bg-sumi-50 text-sumi-900"
+                          : "text-sumi-600 hover:bg-sumi-50 hover:text-sumi-800"
+                      )
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              )
+            )}
+          </ul>
+
+          <div className="my-5 h-px bg-sumi-100" />
+
+          <div className="flex flex-col gap-3">
+            <NavLink
+              to={NAV.cta.to}
+              onClick={() => setMobileOpen(false)}
+              className="btn-primary justify-center gap-2"
+            >
+              {NAV.cta.label}
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </NavLink>
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="btn-outline justify-center gap-2"
+            >
+              <Phone className="h-3.5 w-3.5" aria-hidden />
+              {PHONE_DISPLAY}
+            </a>
+          </div>
+        </nav>
+      </div>
     </>
   );
 }

@@ -11,6 +11,7 @@ import {
   Building,
   ArrowRight,
   Droplets,
+  Home as HomeIcon,
 } from "lucide-react";
 
 function useParallax(speed = 0.4) {
@@ -36,7 +37,7 @@ function useParallax(speed = 0.4) {
 
 const SERVICES = [
   {
-    icon: Users,
+    icon: HomeIcon,
     title: "Residential",
     description:
       "Interior and exterior window cleaning for homes, townhouses, and condos throughout Loudoun County.",
@@ -114,7 +115,8 @@ const Home = () => {
               </Link>
               <a
                 href="tel:5403351059"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-washi-200/30 px-7 py-3.5 text-sm font-medium tracking-wide text-washi-100 transition-colors hover:border-washi-100 hover:bg-washi-50/10"
+                className="inline-flex items-center justify-center gap-2 rounded-sm bg-transparent px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-all hover:bg-white/20 hover:border-white"
+                style={{ border: '1px solid rgba(255, 255, 255, 0.6)' }}
               >
                 <Phone className="h-4 w-4" aria-hidden />
                 Call an Expert
@@ -320,7 +322,8 @@ const Home = () => {
             </Link>
             <a
               href="tel:5403351059"
-              className="inline-flex items-center justify-center gap-2 rounded-sm border border-sumi-600 px-7 py-3.5 text-sm font-medium tracking-wide text-washi-200 transition-colors hover:border-sumi-400 hover:text-washi-50"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-transparent px-7 py-3.5 text-sm font-medium tracking-wide text-sumi-200 transition-all hover:bg-sumi-800 hover:text-washi-50"
+              style={{ border: '2px solid rgb(113, 129, 150)' }}
             >
               <Phone className="h-4 w-4" aria-hidden />
               (540) 335-1059
