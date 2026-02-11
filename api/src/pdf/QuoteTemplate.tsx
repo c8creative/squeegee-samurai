@@ -1,5 +1,9 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { join } from 'node:path';
+import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+
+// Logo path: api runs with cwd=api/, logo lives at src/pdf/assets/
+const LOGO_PATH = join(process.cwd(), 'src', 'pdf', 'assets', 'SSamurai_Logo.png');
 
 // Japanese minimalist aesthetic with professional layout
 const styles = StyleSheet.create({
@@ -14,14 +18,22 @@ const styles = StyleSheet.create({
     borderBottom: '2px solid #e53e3e',
     paddingBottom: 15,
   },
+  logo: {
+    width: 80,
+    height: 80,
+    marginBottom: 8,
+  },
+  headerText: {
+    flexDirection: 'column',
+  },
   companyName: {
-    fontSize: 28,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#1a202c',
     marginBottom: 4,
   },
   tagline: {
-    fontSize: 12,
+    fontSize: 11,
     color: '#718096',
     fontStyle: 'italic',
   },
@@ -143,8 +155,11 @@ export function QuoteTemplate({ quote, contact, breakdown, businessName }: Quote
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.companyName}>Squeegee Samurai</Text>
-          <Text style={styles.tagline}>Clarity through Pane</Text>
+          <Image src={LOGO_PATH} style={styles.logo} />
+          <View style={styles.headerText}>
+            <Text style={styles.companyName}>Squeegee Samurai Free Estimate</Text>
+            <Text style={styles.tagline}>Clarity through Pane</Text>
+          </View>
         </View>
 
         {/* Quote Details */}

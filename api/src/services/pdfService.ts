@@ -1,5 +1,4 @@
-import React from 'react';
-import { pdf } from '@react-pdf/renderer';
+import { renderToBuffer } from '@react-pdf/renderer';
 import { createClient } from '@supabase/supabase-js';
 import { QuoteTemplate } from '../pdf/QuoteTemplate.js';
 import type { QuoteResult, QuoteBody } from '../quoteLogic.js';
@@ -21,7 +20,7 @@ export async function generateAndUploadPDF(
   result: QuoteResult
 ): Promise<PDFResult> {
   // 1. Generate PDF as Buffer
-  // Using pdf().toBuffer() - version-agnostic approach
+  // Use renderToBuffer - stable API (pdf().toBuffer() can cause circular ref errors)
   const templateElement = QuoteTemplate({
     quote: {
       id: quoteId,
@@ -34,8 +33,7 @@ export async function generateAndUploadPDF(
     businessName: (quoteData.formInput as any).businessName,
   });
 
-  const pdfDoc = pdf(templateElement);
-  const pdfBuffer = await pdfDoc.toBuffer();
+  const pdfBuffer = await renderToBuffer(templateElement);
 
   // 2. Upload to Supabase Storage
   // CRITICAL: Path is INSIDE bucket (no 'quotes/' prefix)

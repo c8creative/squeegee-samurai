@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { pdf } from '@react-pdf/renderer';
+import { renderToBuffer } from '@react-pdf/renderer';
 import { QuoteTemplate } from './pdf/QuoteTemplate.js';
 
 export const testPdfRouter = Router();
@@ -33,7 +33,7 @@ testPdfRouter.get('/test-pdf', async (req: Request, res: Response) => {
 
     const sampleBusinessName = 'Test Business Inc.';
 
-    // Generate PDF
+    // Generate PDF using renderToBuffer (stable API, avoids pdf().toBuffer() circular ref issues)
     const templateElement = QuoteTemplate({
       quote: sampleQuote,
       contact: sampleContact,
@@ -41,8 +41,7 @@ testPdfRouter.get('/test-pdf', async (req: Request, res: Response) => {
       businessName: sampleBusinessName,
     });
 
-    const pdfDoc = pdf(templateElement);
-    const pdfBuffer = await pdfDoc.toBuffer();
+    const pdfBuffer = await renderToBuffer(templateElement);
 
     // Set headers to display PDF in browser
     res.setHeader('Content-Type', 'application/pdf');
